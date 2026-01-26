@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhyxcewtmqhiq"]
+
+[ext_resource type="PackedScene" uid="uid://b6prxvvwr812o" path="res://scene/character_body_3d.tscn" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://bde8oex302sl3" path="res://texture/photo-ground-texture-pattern.jpg" id="2_a0tk4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_texture = ExtResource("2_a0tk4")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_noarx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7782341, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034338117, 0, -0.010777473)
+use_collision = true
+size = Vector3(13.694336, 0.24902344, 31.085938)
+material = SubResource("StandardMaterial3D_r3fl7")
