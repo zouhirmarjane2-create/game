@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpgdb4l443os8"]
+
+[ext_resource type="PackedScene" uid="uid://kqaweom4b6xq" path="res://assets/fence.glb" id="1_5ug2t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fghi7"]
+points = PackedVector3Array(0.42847586, -0.007877469, -0.052297264, 0.18350331, 0.6155529, 0.04147976, 0.19032066, 0.626922, -0.052297264, -0.50793654, -0.007815331, -0.052297264, -0.50793654, 0.19848207, 0.1063925, -0.50793654, 0.5951696, -0.052297264, 0.50792724, 0.19841993, 0.1063925, 0.45113477, 0.38, -0.08838249, 0.495321, 0, 0.041916072, -0.50793654, 0.3888722, 0.1063925, 0.50792724, 0.5952318, 0.042900443, -0.45525002, 0.21, -0.08921636, -0.49542728, 0, 0.041923646, -0.36494395, 0.626922, 0.042900443, 0.50792724, 0.3888722, 0.1063925, 0.50792724, 0.5952318, -0.052297264, 0.50792724, -0.007877469, -0.052297264, -0.45114407, 0.38, -0.08838249, 0.4549861, 0.21, -0.089164644, -0.50793654, 0.5951696, 0.042900443, 0.14278904, 0.626922, -0.052297264)
+
+[node name="fence2" unique_id=364292119 instance=ExtResource("1_5ug2t")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=2043184720]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=885529017]
+shape = SubResource("ConvexPolygonShape3D_fghi7")

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://53js1gbannco"]
+
+[ext_resource type="PackedScene" uid="uid://c4fpe0jilhj4d" path="res://assets/grave.glb" id="1_6aep5"]
+[ext_resource type="PackedScene" uid="uid://ogyp5e6cym8x" path="res://assets/grave-border.glb" id="2_l40y4"]
+[ext_resource type="PackedScene" uid="uid://y030754x6ey4" path="res://assets/gravestone-round.glb" id="3_l40y4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8jvum"]
+points = PackedVector3Array(-0.23435454, -0.009834915, -0.4811935, 0.3565309, 0.029556805, -0.3039992, 0.3565309, -0.009834915, -0.3039992, -0.11617745, -0.009834915, 0.6019622, -0.13588583, 0.12802936, 0.4443876, -0.076760665, 0.12802936, -0.5009366, 0.27769735, 0.08862414, 0.50349355, -0.37224004, 0.049259413, -0.1069384, 0.29740575, -0.009834915, 0.52323663, 0.12010346, 0.12802936, -0.4615738, 0.061051555, -0.009834915, -0.6191484, -0.23435454, -0.009834915, 0.4838738, 0.100468345, 0.12802936, 0.4838738, -0.3919484, -0.009834915, -0.1069384, 0.13981186, 0.068921536, 0.6217053, -0.27369806, 0.08862414, -0.3236189, 0.29740575, 0.08862414, -0.047832504, 0.23828056, 0.068921536, -0.5009366, -0.23435454, 0.068921536, 0.4247679, 0.13981186, -0.009834915, 0.6414484, -0.15552096, -0.009834915, -0.5796622, -0.15552096, 0.12802936, -0.3236189, 0.25798896, -0.009834915, -0.5009366, 0.13981186, 0.12802936, 0.4247679, -0.076760665, 0.12802936, 0.50349355, -0.37224004, 0.049259413, -0.1857874, 0.08075995, 0.12802936, -0.5009366, 0.33682254, 0.049259413, -0.343362, 0.061051555, 0.068921536, 0.6217053, 0.13981186, 0.12802936, -0.4220876, -0.05705227, -0.009834915, -0.6191484, -0.13588583, 0.12802936, -0.4418307)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jvum"]
+size = Vector3(0.35131836, 0.41015625, 0.13671875)
+
+[node name="grave2" unique_id=2091544931 instance=ExtResource("1_6aep5")]
+
+[node name="grave" parent="." index="0" unique_id=2050327411]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grave" index="0" unique_id=1206396404]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grave/StaticBody3D" index="0" unique_id=2112718702]
+shape = SubResource("ConvexPolygonShape3D_8jvum")
+
+[node name="grave-border2" parent="." index="1" unique_id=1253395613 instance=ExtResource("2_l40y4")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="gravestone-round2" parent="." index="2" unique_id=280209286 instance=ExtResource("3_l40y4")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.11028433, 0, -2.908057)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gravestone-round2" index="1" unique_id=725202352]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gravestone-round2/StaticBody3D" index="0" unique_id=1946560705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28880173, 0)
+shape = SubResource("BoxShape3D_8jvum")
