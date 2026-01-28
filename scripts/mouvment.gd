@@ -25,14 +25,14 @@ func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
 	if parent.is_on_floor() :
 		if direction :
-			parent.velocity.x = direction.x * speed
-			parent.velocity.z = direction.z * speed
+			parent.velocity.x = direction.x * speed * delta 
+			parent.velocity.z = direction.z * speed * delta 
 		else:
-			parent.velocity.x = lerp(parent.velocity.x , direction.x * speed , delta * 4.0 )
-			parent.velocity.z = lerp(parent.velocity.z , direction.z * speed , delta * 4.0 )
+			parent.velocity.x = lerp(parent.velocity.x , direction.x * speed * delta, delta * 4.0 )
+			parent.velocity.z = lerp(parent.velocity.z , direction.z * speed * delta, delta * 4.0 )
 	else :
-		parent.velocity.x = lerp(parent.velocity.x , direction.x * speed , delta * 2.0)
-		parent.velocity.z = lerp(parent.velocity.z , direction.z * speed , delta * 2.0)
+		parent.velocity.x = lerp(parent.velocity.x , direction.x * speed * delta , delta * 2.0)
+		parent.velocity.z = lerp(parent.velocity.z , direction.z * speed * delta , delta * 2.0)
 	
 
 	parent.move_and_slide()

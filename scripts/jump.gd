@@ -8,7 +8,7 @@ var current_gravity = 0.0
 func process_physics(delta: float) -> State:
 	if parent.is_on_floor():
 		if Input.is_action_just_pressed("jump"):
-			parent.velocity.y = jump_force
+			parent.velocity.y = jump_force * delta 
 			current_gravity = gravity
 		else:
 			parent.velocity.y = 0
