@@ -14,6 +14,8 @@ points = PackedVector3Array(-0.20513198, 0.46656317, -0.61229974, 0.5986795, 0.4
 [node name="pine2" unique_id=789008692 instance=ExtResource("1_jgkb1")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pine" parent_id_path=PackedInt32Array(1834679960) index="0" unique_id=1629280288]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pine/StaticBody3D" index="0" unique_id=1298013876]
 shape = SubResource("ConvexPolygonShape3D_rhsdd")

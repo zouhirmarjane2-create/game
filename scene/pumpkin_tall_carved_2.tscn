@@ -8,6 +8,8 @@ points = PackedVector3Array(0.12280525, 0.18516774, 0.0953999, -0.15905575, 0.13
 [node name="pumpkin-tall-carved2" unique_id=685548853 instance=ExtResource("1_mnyi0")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pumpkin-tall-carved" parent_id_path=PackedInt32Array(861315762) index="0" unique_id=1695553859]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pumpkin-tall-carved/StaticBody3D" index="0" unique_id=1904998939]
 shape = SubResource("ConvexPolygonShape3D_q03wx")

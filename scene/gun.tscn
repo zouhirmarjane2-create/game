@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dc7wqvmc6nj8t"]
+
+[ext_resource type="PackedScene" uid="uid://c43fvrrcrgcsn" path="res://assets/Scifi Smg.glb" id="1_3rqrp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8bng"]
+albedo_color = Color(0.0746926, 0.15561438, 0.19687125, 1)
+metallic = 1.0
+metallic_specular = 0.27
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5mb1"]
+albedo_color = Color(0.12397324, 0.54911447, 0, 1)
+metallic = 1.0
+roughness = 0.49
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ovx3"]
+albedo_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+metallic = 1.0
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqd2g"]
+albedo_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+metallic = 1.0
+roughness = 0.0
+
+[node name="Root Scene" unique_id=1273455208 instance=ExtResource("1_3rqrp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Magazine_SMG_2" parent="RootNode" parent_id_path=PackedInt32Array(29809733) index="0" unique_id=2101936934]
+cast_shadow = 0
+
+[node name="SMG_2" parent="RootNode" parent_id_path=PackedInt32Array(29809733) index="1" unique_id=1683018]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_h8bng")
+surface_material_override/1 = SubResource("StandardMaterial3D_h5mb1")
+surface_material_override/2 = SubResource("StandardMaterial3D_2ovx3")
+surface_material_override/3 = SubResource("StandardMaterial3D_nqd2g")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="1" unique_id=1917056638]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.3944294, 0)
+target_position = Vector3(0, 0, -1)

@@ -10,11 +10,15 @@ var player = null
 
 @onready var player_healt = "/root/main/game/player/code logic/healt"
 var healt_node
+var health = 20
+
+var dami = 2
 
 func _ready() -> void:
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
 	state_machine = anime_tree.get("parameters/playback")
+	
 func _process(delta: float) -> void:
 	velocity = Vector3.ZERO
 	match state_machine.get_current_node() :
@@ -31,7 +35,10 @@ func _process(delta: float) -> void:
 	
 	anime_tree.set("parameters/conditions/punch" , _target_in_range())
 	anime_tree.set("parameters/conditions/run" , !_target_in_range())
-	
+	if health <= 0 :
+		anime_tree.set("parameters/conditions/die" , true)
+		await get_tree().create_timer(4.0).timeout
+		queue_free()
 	
 	move_and_slide()
 	
@@ -43,3 +50,43 @@ func hit_finish() :
 		var dir = global_position.direction_to(player.global_position)
 		healt_node.hit(dir)
 	
+
+
+
+
+
+
+
+
+func _on_physical_bone_mixamorig_spine_1_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_head_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_shoulder_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_arm_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_fore_arm_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_hand_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_shoulder_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_arm_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_fore_arm_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_hand_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_up_leg_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_leg_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_left_foot_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bonfe_mixamorig_right_up_leg_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_leg_body_hit(dam: Variant) -> void:
+	health -= dam
+func _on_physical_bone_mixamorig_right_foot_body_hit(dam: Variant) -> void:
+	health -= dam

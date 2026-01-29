@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bnthe44qvmc01"]
+
+[ext_resource type="PackedScene" uid="uid://cdceipoqmbx1x" path="res://assets/gravestone-broken.glb" id="1_eouxh"]
+
+[node name="gravestone-broken2" unique_id=428371510 instance=ExtResource("1_eouxh")]
+
+[node name="gravestone-broken" parent="." index="0" unique_id=153476547]
+layers = 3

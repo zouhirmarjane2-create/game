@@ -14,6 +14,8 @@ points = PackedVector3Array(0.6167976, 0.4521411, 0.3532488, 0.2518103, 0.630099
 [node name="pine-crooked2" unique_id=2089244882 instance=ExtResource("1_5u73t")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pine-crooked" parent_id_path=PackedInt32Array(1125406151) index="0" unique_id=737716474]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pine-crooked/StaticBody3D" index="0" unique_id=546739078]
 shape = SubResource("ConvexPolygonShape3D_o1lx6")

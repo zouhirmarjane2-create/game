@@ -8,6 +8,7 @@ points = PackedVector3Array(0.514168, 0.10786943, 0.32574317, -0.4770138, 0.0030
 [node name="altar-wood2" unique_id=1723400816 instance=ExtResource("1_bfkkn")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="altar-wood" parent_id_path=PackedInt32Array(844896504) index="0" unique_id=302161967]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="altar-wood/StaticBody3D" index="0" unique_id=1440767574]
 shape = SubResource("ConvexPolygonShape3D_3ev38")

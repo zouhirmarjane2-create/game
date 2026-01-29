@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c4crj5dpqe0bh"]
+
+[ext_resource type="PackedScene" uid="uid://ogyp5e6cym8x" path="res://assets/grave-border.glb" id="1_du56e"]
+
+[node name="grave-border2" unique_id=1253395613 instance=ExtResource("1_du56e")]

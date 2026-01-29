@@ -17,6 +17,8 @@ points = PackedVector3Array(0.412672, 0.08729227, 0.055955797, 0.412672, -0.0079
 [node name="fence-damaged2" unique_id=1511698295 instance=ExtResource("1_3kvwk")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1626720030]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=548312433]
 shape = SubResource("ConvexPolygonShape3D_w1rsu")

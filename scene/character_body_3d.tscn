@@ -2,25 +2,118 @@
 
 [ext_resource type="Script" uid="uid://l6jle7itsj81" path="res://scripts/player.gd" id="1_oox4s"]
 [ext_resource type="Script" uid="uid://ffnkefdclfu6" path="res://scripts/machine_state.gd" id="2_edw73"]
+[ext_resource type="PackedScene" uid="uid://dc7wqvmc6nj8t" path="res://scene/gun.tscn" id="2_l5k4b"]
 [ext_resource type="Script" uid="uid://bdmtcb7kf38fa" path="res://scripts/mouvment.gd" id="3_l5k4b"]
 [ext_resource type="Script" uid="uid://c3nvhx412y04a" path="res://scripts/jump.gd" id="4_3y8pf"]
-[ext_resource type="Script" uid="uid://b1vo1ro0eru5j" path="res://scene/healt.gd" id="5_edw73"]
+[ext_resource type="Script" uid="uid://brntf1i15per0" path="res://scripts/shot.gd" id="7_3y8pf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m430j"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oox4s"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
+[sub_resource type="Animation" id="Animation_3y8pf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.78235877, -0.4392829, -0.43364882)]
+}
+
+[sub_resource type="Animation" id="Animation_3iaxa"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.782, -0.439, -0.434), Vector3(-0.782, -0.439, 0.5), Vector3(-0.782, -0.439, -0.434)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g8qwc"]
+_data = {
+&"RESET": SubResource("Animation_3y8pf"),
+&"shoot": SubResource("Animation_3iaxa")
+}
+
+[sub_resource type="Animation" id="Animation_l5k4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.782, -0.439, -0.434)]
+}
+
+[sub_resource type="Animation" id="Animation_g8qwc"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04947565, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.782, -0.439, -0.434), Vector3(0.782, -0.439, 0.5), Vector3(0.782, -0.439, -0.434)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_as6ag"]
+_data = {
+&"RESET": SubResource("Animation_l5k4b"),
+&"shoot": SubResource("Animation_g8qwc")
+}
+
+[sub_resource type="GDScript" id="GDScript_l5k4b"]
+script/source = "extends State
+
+
+
+signal player_hit
+var hit_stager = 12.0
+
+
+
+
+func hit(dir) :
+	emit_signal(\"player_hit\")
+	parent.velocity += clamp(dir * hit_stager , Vector3(1 , 0.0 , 1 ) , Vector3(20.0 , 0.0 , 20.0))
+"
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1370908471 node_paths=PackedStringArray("logic")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_oox4s")
 logic = NodePath("code logic")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=514862451]
-transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, -0.9398351, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.66209877, 0)
+layers = 4
 mesh = SubResource("CapsuleMesh_m430j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=758639898]
-transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 0, -0.9398351, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.66209877, 0)
 shape = SubResource("ConvexPolygonShape3D_oox4s")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1251026844]
@@ -29,12 +122,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7054037, 0)
 [node name="head" type="Node3D" parent="." unique_id=554318768]
 
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=658183268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 
-[node name="code logic" type="Node" parent="." unique_id=497460289 node_paths=PackedStringArray("jump", "moving", "parent")]
+[node name="gun" type="Node3D" parent="head/Camera3D" unique_id=125503630]
+
+[node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
+transform = Transform3D(0.086824104, 0, 0.49240384, 0, 0.5, 0, -0.49240384, 0, 0.086824104, 0.78235877, -0.4392829, -0.43364882)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene" unique_id=169537107]
+libraries/ = SubResource("AnimationLibrary_g8qwc")
+
+[node name="Root Scene2" parent="head/Camera3D/gun" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
+transform = Transform3D(-0.0868241, 0, 0.49240386, 0, 0.5, 0, -0.49240386, 0, -0.0868241, 0.782, -0.439, -0.434)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene2" unique_id=658255380]
+libraries/ = SubResource("AnimationLibrary_as6ag")
+
+[node name="code logic" type="Node" parent="." unique_id=497460289 node_paths=PackedStringArray("jump", "moving", "parent", "shot")]
 script = ExtResource("2_edw73")
 jump = NodePath("jump")
 moving = NodePath("mouving")
 parent = NodePath("..")
+shot = NodePath("shot")
 
 [node name="mouving" type="Node" parent="code logic" unique_id=543012334 node_paths=PackedStringArray("camera", "head", "jump", "moving", "parent")]
 script = ExtResource("3_l5k4b")
@@ -58,5 +167,16 @@ moving = NodePath("../mouving")
 parent = NodePath("../..")
 
 [node name="healt" type="Node" parent="code logic" unique_id=1430506086 node_paths=PackedStringArray("parent")]
-script = ExtResource("5_edw73")
+script = SubResource("GDScript_l5k4b")
 parent = NodePath("../..")
+
+[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun_anime", "bareel", "gun_anime2", "bareel2", "parent")]
+script = ExtResource("7_3y8pf")
+gun_anime = NodePath("../../head/Camera3D/gun/Root Scene/AnimationPlayer")
+bareel = NodePath("../../head/Camera3D/gun/Root Scene/RayCast3D")
+gun_anime2 = NodePath("../../head/Camera3D/gun/Root Scene2/AnimationPlayer")
+bareel2 = NodePath("../../head/Camera3D/gun/Root Scene2/RayCast3D")
+parent = NodePath("../..")
+
+[editable path="head/Camera3D/gun/Root Scene"]
+[editable path="head/Camera3D/gun/Root Scene2"]

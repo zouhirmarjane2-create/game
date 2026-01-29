@@ -1,0 +1,22 @@
+extends Node3D
+
+
+@export var bulet_speed : float
+@export var mesh : MeshInstance3D
+@export var raycast : RayCast3D 
+@export var partcal : GPUParticles3D
+@export var damage : float
+
+func _process(delta: float) -> void:
+	position += transform.basis * Vector3(0 , 0 , -bulet_speed) * delta
+	
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		
+		if collider.has_method("hit"):
+			collider.hit()
+		
+		partcal.emitting = true
+		raycast.enabled = false
+		await get_tree().create_timer(1.0).timeout
+		queue_free()

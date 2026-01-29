@@ -8,6 +8,8 @@ points = PackedVector3Array(0.27140474, 0.0044225305, 0.025024757, 0.14818719, 0
 [node name="trunk2" unique_id=680552671 instance=ExtResource("1_bhd3u")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="trunk" parent_id_path=PackedInt32Array(655864094) index="0" unique_id=992664017]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trunk/StaticBody3D" index="0" unique_id=1426563974]
 shape = SubResource("ConvexPolygonShape3D_bhd3u")

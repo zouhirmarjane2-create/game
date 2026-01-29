@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://conf2bvgo2y5l"]
+
+[ext_resource type="Script" uid="uid://4u8ugttwpluf" path="res://scripts/bulet.gd" id="1_4oklr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pke4c"]
+size = Vector3(0.05, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eebj4"]
+albedo_color = Color(0.47641498, 0.687641, 0.24432266, 1)
+emission_enabled = true
+emission = Color(0.44705883, 0.63529414, 0.27058825, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4oklr"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pke4c"]
+albedo_color = Color(0.38118255, 0.6241174, 0.26194432, 1)
+emission_enabled = true
+emission = Color(0.38710815, 0.5527277, 0.19719857, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_eebj4"]
+material = SubResource("StandardMaterial3D_pke4c")
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="bulet" type="Node3D" unique_id=1258656550 node_paths=PackedStringArray("mesh", "raycast", "partcal")]
+script = ExtResource("1_4oklr")
+bulet_speed = 40.0
+mesh = NodePath("MeshInstance3D")
+raycast = NodePath("RayCast3D")
+partcal = NodePath("GPUParticles3D")
+damage = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=187501488]
+layers = 3
+mesh = SubResource("BoxMesh_pke4c")
+surface_material_override/0 = SubResource("StandardMaterial3D_eebj4")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=372404765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.48841143)
+target_position = Vector3(0, 0, -1)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=473038419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5368989)
+layers = 3
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4oklr")
+draw_pass_1 = SubResource("BoxMesh_eebj4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1310370428]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

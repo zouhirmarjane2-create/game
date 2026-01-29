@@ -17,6 +17,8 @@ points = PackedVector3Array(-0.1774942, 0.6555412, 0.058494687, -0.30334443, 0.5
 [node name="shovel-dirt2" unique_id=159192214 instance=ExtResource("1_1my02")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="shovel-dirt" parent_id_path=PackedInt32Array(595847678) index="0" unique_id=356061297]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="shovel-dirt/StaticBody3D" index="0" unique_id=337587567]
 shape = SubResource("ConvexPolygonShape3D_k7rt6")
