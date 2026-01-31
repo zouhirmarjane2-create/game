@@ -8,19 +8,28 @@ extends State
 @export var bob_freq : float
 @export var bob_amp : float
 @export var base_fov : float
+@export var stamina : ProgressBar
 
 var speed
 var t_bob = 0.0
 var fov_change = 1.5
+var can_sprint = true
 
 func process_physics(delta: float) -> State:
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	if Input.is_action_pressed("sprint") :
+	if Input.is_action_pressed("sprint") and can_sprint :
 		speed = sprint_speed
+		stamina.value -= delta * 20
 	else :
 		speed = walk_speed
+		stamina.value += delta * 10
+
+	if stamina.value <=0.0 :
+		can_sprint = false
+	elif stamina.value >= 50.0  :
+		can_sprint = true
 
 	parent.velocity.y -= gravity * delta
 	if parent.is_on_floor() :

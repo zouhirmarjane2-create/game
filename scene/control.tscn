@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://blm85dsgxxex3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnow5"]
+bg_color = Color(0.5416175, 0.47941345, 0.41044804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhy7a"]
+bg_color = Color(0.9696924, 0.9696924, 0.9696924, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f676y"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrdfc"]
+bg_color = Color(0, 0.4745098, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control" unique_id=44836397]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="." unique_id=1141400648]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -763.0
+offset_top = 505.0
+offset_right = -393.0
+offset_bottom = 579.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mnow5")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel2" unique_id=698619242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_rhy7a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f676y")
+value = 100.0
+
+[node name="Panel3" type="Panel" parent="." unique_id=1438543450]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -278.0
+offset_right = 166.0
+offset_bottom = -226.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrdfc")
+
+[node name="Label" type="Label" parent="Panel3" unique_id=1160911695]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -32.0
+offset_right = 143.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "money
+"
+horizontal_alignment = 1
+vertical_alignment = 1
