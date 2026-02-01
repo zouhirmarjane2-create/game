@@ -5,6 +5,7 @@ extends Node
 @export var moving: State
 @export var parent: Player
 @export var shot : State
+@export var healt : State
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -16,4 +17,5 @@ func process_physics(delta: float) -> State:
 	moving.process_physics(delta)
 	jump.process_physics(delta)
 	shot.process_physics(delta)
+	healt.process_physics(delta)
 	return null

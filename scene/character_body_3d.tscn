@@ -3,9 +3,14 @@
 [ext_resource type="Script" uid="uid://l6jle7itsj81" path="res://scripts/player.gd" id="1_oox4s"]
 [ext_resource type="Script" uid="uid://ffnkefdclfu6" path="res://scripts/machine_state.gd" id="2_edw73"]
 [ext_resource type="PackedScene" uid="uid://dc7wqvmc6nj8t" path="res://scene/gun.tscn" id="2_l5k4b"]
+[ext_resource type="AudioStream" uid="uid://ckg4vdnlhv7uy" path="res://sound/658566__ineedfreesoundeffectspls__smg_shoot.wav" id="3_3y8pf"]
 [ext_resource type="Script" uid="uid://bdmtcb7kf38fa" path="res://scripts/mouvment.gd" id="3_l5k4b"]
+[ext_resource type="AudioStream" uid="uid://crqusy4eh83r3" path="res://sound/612165__outsidetheboxaudio__retro-sub-machine-gun-reload.wav" id="4_3iaxa"]
 [ext_resource type="Script" uid="uid://c3nvhx412y04a" path="res://scripts/jump.gd" id="4_3y8pf"]
+[ext_resource type="AudioStream" uid="uid://do31u3p8vouh3" path="res://sound/667292__pekena_larva__voc_male_jump_02.wav" id="6_as6ag"]
+[ext_resource type="AudioStream" uid="uid://cmhv65gu47e1q" path="res://sound/268166__skradz__falling-on-floor.mp3" id="6_fnlld"]
 [ext_resource type="Script" uid="uid://brntf1i15per0" path="res://scripts/shot.gd" id="7_3y8pf"]
+[ext_resource type="AudioStream" uid="uid://b56osx0631foc" path="res://sound/141624__metrostock99__short-heart-beats-clean.mp3" id="7_fnlld"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m430j"]
 
@@ -238,15 +243,34 @@ signal player_hit
 var hit_stager = 12.0
 var player_healt = 100
 @export var health_bar : ProgressBar
+@export var heart : AudioStreamPlayer
 var zombie_damage = 10
 
 func hit(dir) :
 	emit_signal(\"player_hit\")
 	parent.velocity += clamp(dir * hit_stager , Vector3(1 , 0.0 , 1 ) , Vector3(20.0 , 0.0 , 20.0))
 	player_healt -= zombie_damage
-	health_bar.value -= zombie_damage
-	if player_healt <= 0 :
+
+ 
+func process_physics(delta: float) -> State:
+	health_bar.value = player_healt
+	if player_healt < 100:
+		player_healt += delta / 3
+	
+	
+	if player_healt <= 30:
+		if not heart.playing:
+			heart.play() 
+	else:
+		if heart.playing:
+			heart.stop() 
+			
+
+	if player_healt <= 0:
 		get_tree().reload_current_scene()
+
+
+	return healt
 "
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1370908471 node_paths=PackedStringArray("logic")]
@@ -275,29 +299,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, -8.883953e-16, 0.22378182, -0.060817324)
 
 [node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(0.08386563, -0.022471732, 0.49240372, 0.1294095, 0.4829629, -3.7909977e-09, -0.4756255, 0.1274435, 0.08682409, -0.782, -0.439, -0.434)
+transform = Transform3D(0.17808118, -0.02247173, 0.4666711, 0.12693568, 0.4829629, -0.025182294, -0.44963795, 0.1274435, 0.17771813, -0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
+
+[node name="RayCast3D" parent="head/Camera3D/gun/Root Scene" index="1" unique_id=1917056638]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.25656354, -9.313224e-10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene" unique_id=169537107]
 libraries/ = SubResource("AnimationLibrary_g8qwc")
 
 [node name="Root Scene2" parent="head/Camera3D/gun" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(-0.086824074, 0, 0.49240372, 0, 0.5, 0, -0.49240372, 0, -0.086824074, 0.782, -0.439, -0.434)
+transform = Transform3D(-0.08682407, 0, 0.4924037, 0, 0.49999997, 0, -0.4924037, 0, -0.08682407, 0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene2/RootNode" parent_id_path=PackedInt32Array(1183484301, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
 
+[node name="RayCast3D" parent="head/Camera3D/gun/Root Scene2" index="1" unique_id=1917056638]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.26281255, -5.820766e-11)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene2" unique_id=658255380]
 libraries/ = SubResource("AnimationLibrary_as6ag")
 
-[node name="code logic" type="Node" parent="." unique_id=497460289 node_paths=PackedStringArray("jump", "moving", "parent", "shot")]
+[node name="658566IneedfreesoundeffectsplsSmgShoot" type="AudioStreamPlayer" parent="head/Camera3D/gun" unique_id=773498051]
+stream = ExtResource("3_3y8pf")
+volume_db = -10.0
+
+[node name="612165OutsidetheboxaudioRetroSubMachineGunReload" type="AudioStreamPlayer" parent="head/Camera3D/gun" unique_id=1187694911]
+stream = ExtResource("4_3iaxa")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="667292PekenaLarvaVocMaleJump02" type="AudioStreamPlayer" parent="." unique_id=1263352628]
+stream = ExtResource("6_as6ag")
+
+[node name="268166SkradzFallingOnFloor" type="AudioStreamPlayer" parent="." unique_id=1281933341]
+stream = ExtResource("6_fnlld")
+volume_db = -10.0
+
+[node name="141624Metrostock99ShortHeartBeatsClean" type="AudioStreamPlayer" parent="." unique_id=1620074212]
+stream = ExtResource("7_fnlld")
+volume_db = -5.0
+
+[node name="code logic" type="Node" parent="." unique_id=497460289 node_paths=PackedStringArray("jump", "moving", "parent", "shot", "healt")]
 script = ExtResource("2_edw73")
 jump = NodePath("jump")
 moving = NodePath("mouving")
 parent = NodePath("..")
 shot = NodePath("shot")
+healt = NodePath("healt")
 
 [node name="mouving" type="Node" parent="code logic" unique_id=543012334 node_paths=PackedStringArray("camera", "head", "jump", "moving", "parent")]
 script = ExtResource("3_l5k4b")
@@ -313,24 +364,29 @@ jump = NodePath("../jump")
 moving = NodePath(".")
 parent = NodePath("../..")
 
-[node name="jump" type="Node" parent="code logic" unique_id=689990626 node_paths=PackedStringArray("jump", "moving", "parent")]
+[node name="jump" type="Node" parent="code logic" unique_id=689990626 node_paths=PackedStringArray("jump_sound", "fall_sound", "jump", "moving", "parent")]
 script = ExtResource("4_3y8pf")
 jump_force = 500.0
+jump_sound = NodePath("../../667292PekenaLarvaVocMaleJump02")
+fall_sound = NodePath("../../268166SkradzFallingOnFloor")
 jump = NodePath(".")
 moving = NodePath("../mouving")
 parent = NodePath("../..")
 
-[node name="healt" type="Node" parent="code logic" unique_id=1430506086 node_paths=PackedStringArray("parent")]
+[node name="healt" type="Node" parent="code logic" unique_id=1430506086 node_paths=PackedStringArray("heart", "parent")]
 script = SubResource("GDScript_l5k4b")
+heart = NodePath("../../141624Metrostock99ShortHeartBeatsClean")
 parent = NodePath("../..")
 
-[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun_anime", "bareel", "gun_anime2", "bareel2", "camera", "parent")]
+[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun_anime", "bareel", "gun_anime2", "bareel2", "camera", "shot_", "reload_", "parent")]
 script = ExtResource("7_3y8pf")
 gun_anime = NodePath("../../head/Camera3D/gun/Root Scene/AnimationPlayer")
 bareel = NodePath("../../head/Camera3D/gun/Root Scene/RayCast3D")
 gun_anime2 = NodePath("../../head/Camera3D/gun/Root Scene2/AnimationPlayer")
 bareel2 = NodePath("../../head/Camera3D/gun/Root Scene2/RayCast3D")
 camera = NodePath("../../head/Camera3D")
+shot_ = NodePath("../../head/Camera3D/gun/658566IneedfreesoundeffectsplsSmgShoot")
+reload_ = NodePath("../../head/Camera3D/gun/612165OutsidetheboxaudioRetroSubMachineGunReload")
 magzin_number = 20
 parent = NodePath("../..")
 
