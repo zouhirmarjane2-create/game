@@ -26,6 +26,8 @@ var zombie_sound_rand = 0
 var sound_is_playing = false
 
 func _ready() -> void:
+	health = randf_range(180 , 400)
+	scale = Vector3(health / 200 , health / 200 , health / 200)
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
 	state_machine = anime_tree.get("parameters/playback")
@@ -33,17 +35,16 @@ func _ready() -> void:
 	dead.connect(score_label._on_zombie_dead)
 func _process(delta: float) -> void:
 	velocity = Vector3.ZERO
-	if  i > 1 :
-		zombie_sound_rand = randi() % 100 + 1
-		i = 0
-	else :
-		i += delta
-	if zombie_sound_rand >= 85  :
-		if not zomnie_sound.playing :
+
+	i += delta
+	if i > 1.0:
+		if randi() % 100 + 1 >= 85 and not zomnie_sound.playing:
 			zomnie_sound.play()
-	else :
-		if zomnie_sound.playing :
-			zomnie_sound.play()
+			
+		elif randi() % 100 + 1 < 85:
+			zomnie_sound.stop()
+		i = 0.0
+	
 	if not is_hit :
 		match state_machine.get_current_node() :
 			"run":

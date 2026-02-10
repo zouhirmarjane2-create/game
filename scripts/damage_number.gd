@@ -14,7 +14,7 @@ func display_number(value : int , position : Vector2) :
 		clor = "#FFFF00"
 	
 	number.label_settings.font_color = clor
-	number.label_settings.font_size = 64
+	number.label_settings.font_size = 128
 	number.label_settings.font = load("res://texture/RushDriver-Italic.otf")
 	number.label_settings.outline_color = "#000"
 	number.label_settings.outline_size = 1

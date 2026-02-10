@@ -296,22 +296,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7054037, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 
 [node name="gun" type="Node3D" parent="head/Camera3D" unique_id=125503630]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, -8.883953e-16, 0.22378182, -0.060817324)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, 0.021639347, 0.22413336, -0.19438472)
 
 [node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(0.17808118, -0.02247173, 0.4666711, 0.12693568, 0.4829629, -0.025182294, -0.44963795, 0.1274435, 0.17771813, -0.782, -0.439, -0.434)
+transform = Transform3D(0.08682409, 0, 0.4924037, 0, 0.5, 0, -0.49240372, 0, 0.08682408, -0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
 
 [node name="RayCast3D" parent="head/Camera3D/gun/Root Scene" index="1" unique_id=1917056638]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.25656354, -9.313224e-10)
+transform = Transform3D(-4.371139e-08, 0.026194401, -0.99965686, 0, 0.99965686, 0.026194401, 1, 1.144993e-09, -4.3696392e-08, 1.1986091, 0.25656354, -9.313224e-10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene" unique_id=169537107]
 libraries/ = SubResource("AnimationLibrary_g8qwc")
 
 [node name="Root Scene2" parent="head/Camera3D/gun" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(-0.08682407, 0, 0.4924037, 0, 0.49999997, 0, -0.4924037, 0, -0.08682407, 0.782, -0.439, -0.434)
+transform = Transform3D(-0.08682406, 0, 0.49240366, 0, 0.49999997, 0, -0.49240366, 0, -0.08682406, 0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene2/RootNode" parent_id_path=PackedInt32Array(1183484301, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
@@ -352,8 +352,8 @@ healt = NodePath("healt")
 
 [node name="mouving" type="Node" parent="code logic" unique_id=543012334 node_paths=PackedStringArray("camera", "head", "jump", "moving", "parent")]
 script = ExtResource("3_l5k4b")
-walk_speed = 350.0
-sprint_speed = 500.0
+walk_speed = 400.0
+sprint_speed = 600.0
 sensetivity = 0.004
 camera = NodePath("../../head/Camera3D")
 head = NodePath("../../head")
