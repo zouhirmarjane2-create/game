@@ -17,6 +17,9 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oox4s"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fnlld"]
+points = PackedVector3Array(0.0013521608, 0.00067122345, 0.0050095236, -0.001791517, -0.0003759854, -0.0019746032, -0.001791517, 0.00032201712, -0.0019746032, 0.012524577, -0.0007251917, 0.0011688008, -0.009124577, -0.0007251917, 0.0043108375, 0.012524577, 0.0010204298, 0.0015174602, 0.011476684, -0.001074398, 0.004660181, -0.008076685, 0.00067122345, 0.00012077158, -0.008076685, -0.0007251917, 0.00012077158, 0.011476684, 0.0010204298, 0.004660181, -0.009124577, 0.00067122345, 0.0043108375, 0.00065429497, -0.0007251917, -0.0019746032, -0.002139356, -0.001074398, 0.0025648058, -0.0024893829, 0.0010204298, 0.0029141488, 0.00065429497, 0.00067122345, -0.0019746032, 0.012524577, -0.001074398, 0.0015174602, 0.012874604, -0.0007251917, 0.0043108375, 0.00065429497, -0.001074398, 0.004660181, 0.011126658, -0.0007251917, 0.0050095236, -0.009124577, -0.0003759854, 0.004660181, 0.00065429497, 0.0010204298, 0.004660181, -0.009474604, -0.0003759854, 0.003263492, 0.0013521608, -0.0007251917, 0.0050095236, 0.012874604, 0.00067122345, 0.0043108375, 0.012524577, 0.00067122345, 0.0011688008, 0.011126658, 0.00067122345, 0.0050095236, -0.001791517, 0.0010204298, 0.0022154627, -0.008774551, 0.00032201712, 0.00047011464, -0.0014414901, -0.0007251917, -0.0019746032, -0.0014414901, 0.00067122345, -0.0019746032, 0.004143624, -0.001074398, 0.0015174602, -0.009124577, 0.00032201712, 0.004660181)
+
 [sub_resource type="Animation" id="Animation_3y8pf"]
 length = 0.001
 loop_mode = 1
@@ -43,6 +46,46 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5789055, 0.149456, 2.0080735e-08)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.3962634, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wnl8p"]
+resource_name = "melee"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.83333325, 1.3),
+"transitions": PackedFloat32Array(0.13869628, 0.4829681, 0.18946427, 0.12074214),
+"update": 0,
+"values": [Vector3(-0.782, -0.539, -0.434), Vector3(-0.782, -0.089, -0.434), Vector3(-0.067, -0.564, -1), Vector3(-0.782, -0.439, -0.434)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.83333325, 1.3),
+"transitions": PackedFloat32Array(0.13869628, 0.4829681, 0.18946427, 0.12074214),
+"update": 0,
+"values": [Vector3(0, 1.4835298, 0), Vector3(0, 1.4835298, 1.1780972), Vector3(0, 1.4835298, -0.95818573), Vector3(0, 1.4835298, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_as6ag"]
@@ -79,7 +122,7 @@ tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3499999, 1.0333333),
+"times": PackedFloat32Array(0, 0.33333334, 1.0333333),
 "transitions": PackedFloat32Array(1, 0.26794314, 0.26794314),
 "update": 0,
 "values": [Vector3(0, 1.3962634, 0), Vector3(0, 1.5707964, 0), Vector3(0, 1.7453293, 0)]
@@ -107,7 +150,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.058333334, 0.1),
+"times": PackedFloat32Array(0.033333335, 0.058333334, 0.1),
 "transitions": PackedFloat32Array(0.40612632, 0.40612632, 1),
 "update": 0,
 "values": [Vector3(0, 1.3962634, 0), Vector3(0, 1.3962634, 0.17453292), Vector3(0, 1.3962634, 0)]
@@ -116,6 +159,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8qwc"]
 _data = {
 &"RESET": SubResource("Animation_3y8pf"),
+&"melee": SubResource("Animation_wnl8p"),
 &"reload": SubResource("Animation_as6ag"),
 &"shoot": SubResource("Animation_3iaxa")
 }
@@ -157,6 +201,48 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5789055, 0.149456, 2.0080735e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_2pml0"]
+resource_name = "melee"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.83333325, 1.3),
+"transitions": PackedFloat32Array(0.13869628, 0.4829681, 0.18946427, 0.12074214),
+"update": 0,
+"values": [Vector3(0.782, -0.539, -0.434), Vector3(0.782, -0.089, -0.434), Vector3(0.192, -0.564, -1), Vector3(0.782, -0.439, -0.434)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.83333325, 1.3),
+"transitions": PackedFloat32Array(0.13869628, 0.4829681, 0.18946427, 0.12074214),
+"update": 0,
+"values": [Vector3(0, 1.6580628, 0), Vector3(0, 1.6580628, 1.1780972), Vector3(0, 1.6580628, -0.95818573), Vector3(0, 1.6580628, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../code logic/shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"melee_hit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_fnlld"]
@@ -230,6 +316,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_as6ag"]
 _data = {
 &"RESET": SubResource("Animation_l5k4b"),
+&"melee": SubResource("Animation_2pml0"),
 &"reload": SubResource("Animation_fnlld"),
 &"shoot": SubResource("Animation_g8qwc")
 }
@@ -275,6 +362,9 @@ func process_physics(delta: float) -> State:
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1370908471 node_paths=PackedStringArray("logic")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_oox4s")
 logic = NodePath("code logic")
 
@@ -299,10 +389,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, 0.021639347, 0.22413336, -0.19438472)
 
 [node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(0.08682409, 0, 0.4924037, 0, 0.5, 0, -0.49240372, 0, 0.08682408, -0.782, -0.439, -0.434)
+transform = Transform3D(0.08682408, 0, 0.49240366, 0, 0.5, 0, -0.4924037, 0, 0.086824074, -0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="head/Camera3D/gun/Root Scene/RootNode/SMG_2" index="0" unique_id=1948727794]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="head/Camera3D/gun/Root Scene/RootNode/SMG_2/StaticBody3D" unique_id=602002084]
+shape = SubResource("ConvexPolygonShape3D_fnlld")
 
 [node name="RayCast3D" parent="head/Camera3D/gun/Root Scene" index="1" unique_id=1917056638]
 transform = Transform3D(-4.371139e-08, 0.026194401, -0.99965686, 0, 0.99965686, 0.026194401, 1, 1.144993e-09, -4.3696392e-08, 1.1986091, 0.25656354, -9.313224e-10)
@@ -311,10 +408,14 @@ transform = Transform3D(-4.371139e-08, 0.026194401, -0.99965686, 0, 0.99965686, 
 libraries/ = SubResource("AnimationLibrary_g8qwc")
 
 [node name="Root Scene2" parent="head/Camera3D/gun" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(-0.08682406, 0, 0.49240366, 0, 0.49999997, 0, -0.49240366, 0, -0.08682406, 0.782, -0.439, -0.434)
+transform = Transform3D(-0.08682405, 0, 0.49240363, 0, 0.49999997, 0, -0.49240363, 0, -0.08682405, 0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene2/RootNode" parent_id_path=PackedInt32Array(1183484301, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="head/Camera3D/gun/Root Scene2/RootNode/SMG_2" index="0" unique_id=293431377]
+collision_layer = 2
+collision_mask = 2
 
 [node name="RayCast3D" parent="head/Camera3D/gun/Root Scene2" index="1" unique_id=1917056638]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.26281255, -5.820766e-11)

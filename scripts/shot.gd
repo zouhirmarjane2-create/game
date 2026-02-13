@@ -7,6 +7,7 @@ extends State
 @export var camera : Camera3D
 @export var shot_ : AudioStreamPlayer
 @export var reload_ : AudioStreamPlayer
+signal mele_hit()
 
 var buleet = load("res://scene/bulet.tscn")
 var instance
@@ -16,6 +17,8 @@ var instance2
 var is_reloading = false
 
 var magazin : int = magzin_number
+
+
 func process_physics(delta: float) -> State:
 	label.text = str(magazin)
 	if magazin <= 0 :
@@ -28,6 +31,12 @@ func process_physics(delta: float) -> State:
 		shot_.stop()
 	if Input.is_action_just_pressed("reload"):
 		reload()
+	if Input.is_action_just_pressed("melee") :
+		var rand = randf()
+		if rand <= 0.5 :
+			gun_anime2.play("melee")
+		else :
+			gun_anime.play("melee")
 	return shot
 
 func reload() :
@@ -59,3 +68,6 @@ func shoot():
 			parent.get_parent().add_child(instance2)
 	else :
 		reload()
+
+func melee_hit() :
+	mele_hit.emit()

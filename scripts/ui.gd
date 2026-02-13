@@ -2,6 +2,7 @@ extends Control
 
 
 @export var pause_menue : Control
+@export var option_menue : Control
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") :
@@ -24,3 +25,11 @@ func _on_continue_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_option_pressed() -> void:
+	option_menue.visible = true
+
+
+func _on_button_pressed() -> void:
+	option_menue.visible = false

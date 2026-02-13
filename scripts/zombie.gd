@@ -16,6 +16,7 @@ var player = null
 @export var punch: AudioStreamPlayer
 @export var health_bar : ProgressBar
 @onready var player_healt = "/root/main/player/code logic/healt"
+
 var healt_node
 var health 
 var full_health
@@ -26,20 +27,27 @@ signal dead
 var i = 0
 var zombie_sound_rand = 0
 var sound_is_playing = false
+var offset
 
 func _ready() -> void:
+	offset = Vector3(randf_range(-2.1 , 2.1) ,0 , randf_range(-2.1 , 2.1))
 	health = randf_range(180 , 400)
 	full_health = health
 	scale = Vector3(health / 200 , health / 200 , health / 200)
+	speed = speed * 290 / health 
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
 	state_machine = anime_tree.get("parameters/playback")
 	var score_label = get_node("/root/main/ui/healthetc/Panel/Label")
 	dead.connect(score_label._on_zombie_dead)
+	
 func _physics_process(delta: float) -> void :
 	velocity = Vector3.ZERO
 	health_bar.value = health / full_health * 100
 
+	
+
+	
 	i += delta
 	if i > 1.0:
 		var ii = randi() % 100 + 1
@@ -53,14 +61,19 @@ func _physics_process(delta: float) -> void :
 	if not is_hit :
 		match state_machine.get_current_node() :
 			"run":
-				nav_agent.set_target_position(player.global_position)
+				nav_agent.set_target_position(player.global_position + offset)
 				var next_nav_point = nav_agent.get_next_path_position()
 				velocity = (next_nav_point - global_position).normalized() * speed * delta
 				rotation.y = lerp_angle(rotation.y , atan2(-velocity.x , -velocity.z) , delta * 10)
 			"punch" :
 				look_at(Vector3(player.global_position.x , global_position.y , player.global_position.z) , Vector3.UP)
 	
-
+	if global_position.distance_to(player.global_position) <= 45 :
+		anime_tree.set("parameters/conditions/is_near" , true)
+		anime_tree.set("parameters/conditions/is_not_near" , false)
+	else :
+		anime_tree.set("parameters/conditions/is_not_near" , true)
+		anime_tree.set("parameters/conditions/is_near" , false)
 
 	
 	anime_tree.set("parameters/conditions/punch" , _target_in_range())
@@ -75,13 +88,11 @@ func _physics_process(delta: float) -> void :
 			queue_free()
 			return
 	move_and_slide()
-	
-	
 func _target_in_range() -> bool :
 	return global_position.distance_to(player.global_position) < attack_range
 	
 func hit_finish() :
-	if global_position.distance_to(player.global_position) < attack_range + 2.0 :
+	if global_position.distance_to(player.global_position) < attack_range + 3.0 :
 		var dir = global_position.direction_to(player.global_position)
 		healt_node.hit(dir)
 		punch.play()
@@ -140,4 +151,6 @@ func _on_physical_bonfe_mixamorig_right_up_leg_body_hit(dam: Variant) -> void:
 func _on_physical_bone_mixamorig_right_leg_body_hit(dam: Variant) -> void:
 	get_hit(dam)
 func _on_physical_bone_mixamorig_right_foot_body_hit(dam: Variant) -> void:
+	get_hit(dam)
+func _on_shot_mele_hit(dam: Variant) -> void:
 	get_hit(dam)

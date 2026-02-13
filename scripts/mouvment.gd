@@ -9,11 +9,16 @@ extends State
 @export var bob_amp : float
 @export var base_fov : float
 @export var stamina : ProgressBar
+@export var sensitivity_slider : HSlider
+@export var sens_label : Label
 
 var speed = walk_speed
 var t_bob = 0.0
 var fov_change = 1.5
 var can_sprint = true
+func _ready() -> void:
+	sensitivity_slider.value = sensetivity * 1000
+	sens_label.text = str(sensitivity_slider.value)
 
 func process_physics(delta: float) -> State:
 	var input_dir = Input.get_vector("left", "right", "up", "down")
@@ -73,3 +78,8 @@ func _headbob(time) -> Vector3 :
 	pos.y = sin(time * bob_freq) * bob_amp
 	pos.z = sin(time * bob_freq / 2) * bob_amp
 	return pos
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	sensetivity = sensitivity_slider.value / 1000
+	sens_label.text = str(sensitivity_slider.value)
