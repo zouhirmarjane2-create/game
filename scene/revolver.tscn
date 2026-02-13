@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://did254s0vpcqd"]
+
+[ext_resource type="PackedScene" uid="uid://c7o8aql55o1px" path="res://assets/Revolver.glb" id="1_3xd2l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra0sn"]
+albedo_color = Color(0.4545979, 0.25524083, 0.009449366, 1)
+metallic_specular = 0.0
+roughness = 0.3
+
+[node name="Revolver" unique_id=285168572 instance=ExtResource("1_3xd2l")]
+
+[node name="Revolver_02_Cube" parent="." index="0" unique_id=311255323]
+surface_material_override/0 = SubResource("StandardMaterial3D_ra0sn")
