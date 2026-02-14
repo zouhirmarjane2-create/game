@@ -578,7 +578,7 @@ transform = Transform3D(-0.215, 0, -1.8795896e-08, 0, 0.215, 0, 1.8795896e-08, 0
 libraries/ = SubResource("AnimationLibrary_8l7vh")
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/Revolver" unique_id=96296201]
-transform = Transform3D(-0.99884593, 0, -0.0480305, 0, 1.0000002, 0, 0.0480305, 0, -0.99884593, -0.015750885, 0.36763197, 1.4044838)
+transform = Transform3D(-0.99884593, 0, -0.0480305, 0, 1.0000002, 0, 0.0480305, 0, -0.99884593, -0.015751362, 0.3676319, 1.6214957)
 target_position = Vector3(0, 0, 1)
 
 [node name="541818NoxSoundWeaponRevolverShotsStereo" type="AudioStreamPlayer" parent="head/Camera3D/Revolver" unique_id=1046954991]
@@ -593,7 +593,7 @@ volume_db = -10.0
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, 0.021639347, 0.22413336, -0.19438472)
 
 [node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(0.086824074, 0, 0.49240363, 0, 0.5, 0, -0.49240366, 0, 0.08682407, -0.782, -0.439, -0.434)
+transform = Transform3D(0.08682407, 0, 0.49240363, 0, 0.5, 0, -0.49240363, 0, 0.08682407, -0.782, -0.439, -0.434)
 
 [node name="SMG_2" parent="head/Camera3D/gun/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
