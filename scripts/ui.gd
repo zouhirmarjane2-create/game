@@ -2,9 +2,20 @@ extends Control
 
 
 @export var pause_menue : Control
+@export var shop : Panel
 @export var option_menue : Control
 
 func _process(delta: float) -> void:
+
+	if Input.is_action_just_pressed("open shop") and not shop.visible:
+		shop.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		get_tree().paused = true
+	elif Input.is_action_just_pressed("open shop") and shop.visible:
+		shop.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		get_tree().paused = false
+	
 	if Input.is_action_just_pressed("pause") :
 		var visiblee = pause_menue.visible
 		if not visiblee :

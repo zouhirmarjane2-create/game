@@ -6,6 +6,7 @@ extends Node3D
 @export var raycast : RayCast3D 
 @export var partcal : GPUParticles3D
 @export var partical2 : GPUParticles3D
+var damage = 20
 var particals
 
 func _process(delta: float) -> void:
@@ -14,7 +15,7 @@ func _process(delta: float) -> void:
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("hit"):
-			collider.hit()
+			collider.hit(damage)
 		if collider is PhysicalBone3D :
 			partical2.emitting = true
 			raycast.enabled = false

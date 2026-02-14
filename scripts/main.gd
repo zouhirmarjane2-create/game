@@ -39,7 +39,8 @@ func get_random_child(parent_node) :
 	return parent_node.get_child(randid)
 
 func _on_timer_2_timeout() -> void:
-	wave += randi_range(1 , 4)
+	wave += randi_range(1 , 3)
+	
 	timer.stop()
 	for i in wave :
 		var spawn_point = get_random_child(spawns).global_position

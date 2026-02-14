@@ -39,7 +39,7 @@ size = Vector3(0.05, 0.05, 0.05)
 
 [node name="bulet" type="Node3D" unique_id=1258656550 node_paths=PackedStringArray("mesh", "raycast", "partcal", "partical2")]
 script = ExtResource("1_4oklr")
-bulet_speed = 40.0
+bulet_speed = 100.0
 mesh = NodePath("MeshInstance3D")
 raycast = NodePath("RayCast3D")
 partcal = NodePath("GPUParticles3D")

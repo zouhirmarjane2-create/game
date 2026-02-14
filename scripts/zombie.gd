@@ -99,7 +99,7 @@ func hit_finish() :
 
 
 
-func get_hit(dam):
+func get_hit(dam , pr):
 	var sound 
 	var x = randi_range(1 , 3)
 	if x == 1 :
@@ -111,7 +111,7 @@ func get_hit(dam):
 	sound.play()
 	sound.pitch_scale = randf_range(0.8 , 1.2)
 	health -= dam
-	DamageNumber.display_number(dam , damage_origine.global_position)
+	DamageNumber.display_number(dam , damage_origine.global_position , pr)
 	is_hit = true
 	await get_tree().create_timer(0.1).timeout  #
 	is_hit = false
@@ -121,36 +121,36 @@ func get_hit(dam):
 
 
 func _on_physical_bone_mixamorig_spine_1_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	dam *= 2
+	get_hit(dam , 1)
 func _on_physical_bone_mixamorig_head_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	dam *= 4
+	get_hit(dam , 0)
 func _on_physical_bone_mixamorig_left_shoulder_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_arm_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_fore_arm_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_hand_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_shoulder_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_arm_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_fore_arm_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_hand_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_up_leg_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_leg_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_left_foot_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bonfe_mixamorig_right_up_leg_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_leg_body_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_foot_body_hit(dam: Variant) -> void:
-	get_hit(dam)
-func _on_shot_mele_hit(dam: Variant) -> void:
-	get_hit(dam)
+	get_hit(dam , 3)

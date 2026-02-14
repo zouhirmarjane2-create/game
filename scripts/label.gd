@@ -1,7 +1,16 @@
 extends Label
 
-var score : int = 0
+var scoree : int = 1
+signal score_added(scoree)
+func _ready() -> void:
+	text = str(scoree)
 
 func _on_zombie_dead() -> void:
-	score += 1
-	text = str(score)
+	scoree += 2
+	score_added.emit(scoree)
+	text = str(scoree)
+
+
+func _on_shot_score_remouved(score: Variant) -> void:
+	scoree = score
+	text = str(scoree)

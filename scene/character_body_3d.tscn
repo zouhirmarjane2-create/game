@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://cmhv65gu47e1q" path="res://sound/268166__skradz__falling-on-floor.mp3" id="6_fnlld"]
 [ext_resource type="Script" uid="uid://brntf1i15per0" path="res://scripts/shot.gd" id="7_3y8pf"]
 [ext_resource type="AudioStream" uid="uid://b56osx0631foc" path="res://sound/141624__metrostock99__short-heart-beats-clean.mp3" id="7_fnlld"]
+[ext_resource type="PackedScene" uid="uid://cjtc633ik724" path="res://scene/root_scene.tscn" id="8_2u64i"]
+[ext_resource type="AudioStream" uid="uid://cghd0jw75chvf" path="res://sound/564480__lumikon__shotgun-shot-sfx.mp3" id="9_pr7q3"]
+[ext_resource type="AudioStream" uid="uid://blfja1kr45nt1" path="res://sound/shotgun-reload.mp3" id="10_mk848"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m430j"]
 
@@ -32,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(-0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.754, -1.143, -0.955)]
+"values": [Vector3(0.754, -0.143, -0.955)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -41,10 +44,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0, 3.159046, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pr7q3"]
@@ -102,7 +105,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8, 1.5),
 "transitions": PackedFloat32Array(0.22531268, 0.21022417, 0.21022417),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.6580628), Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.6580628), Vector3(0, 3.159046, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2u64i"]
@@ -130,7 +133,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.1),
 "transitions": PackedFloat32Array(1, 0.6372803, 0.6372803),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0), Vector3(-0.91629785, 3.1415927, 0), Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0, 3.159046, 0), Vector3(-0.91629785, 3.159046, 0), Vector3(0, 3.159046, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8l7vh"]
@@ -155,7 +158,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.57434916),
 "update": 0,
-"values": [Vector3(-0.782, -0.439, -0.434)]
+"values": [Vector3(-0.782, -1.439, -0.434)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -330,7 +333,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.782, -0.439, -0.434)]
+"values": [Vector3(0.782, -1.439, -0.434)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -507,6 +510,151 @@ _data = {
 &"shoot": SubResource("Animation_g8qwc")
 }
 
+[sub_resource type="Animation" id="Animation_k340h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2.8284266),
+"update": 0,
+"values": [Vector3(0.557, 0.095, 0.276)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2.8284266),
+"update": 0,
+"values": [Vector3(-1.3212142, 3.111922, 0.1605703)]
+}
+
+[sub_resource type="Animation" id="Animation_wb178"]
+resource_name = "apear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2.8284266, 2.8284266, 0.17075509),
+"update": 0,
+"values": [Vector3(0.557, 0.095, 0.276), Vector3(0.917, 0.025, -0.769), Vector3(0.9170813, -0.57954824, -0.7689602)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2.8284266, 2.8284266, 0.17075509),
+"update": 0,
+"values": [Vector3(-1.3212142, 3.111922, 0.1605703), Vector3(-0.029670598, 1.7453293, 1.569051), Vector3(0, 1.7453293, 0.16406095)]
+}
+
+[sub_resource type="Animation" id="Animation_i54pf"]
+resource_name = "disapear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667, 1),
+"transitions": PackedFloat32Array(3.0314333, 3.0314333, 0.19614607),
+"update": 0,
+"values": [Vector3(0.9170813, -0.57954824, -0.7689602), Vector3(0.917, 0.025, -0.769), Vector3(0.557, 0.095, 0.276)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4666667, 1),
+"transitions": PackedFloat32Array(3.0314333, 3.0314333, 0.19614607),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0.16406095), Vector3(-0.029670598, 1.7453293, 1.569051), Vector3(-1.3212142, 3.111922, 0.1605703)]
+}
+
+[sub_resource type="Animation" id="Animation_ft41o"]
+resource_name = "relead"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5),
+"transitions": PackedFloat32Array(0.25, 0.25, 5.0982404),
+"update": 0,
+"values": [Vector3(0.9170813, -0.57954824, -0.7689602), Vector3(0.917, -0.58, 0.956), Vector3(0.9170813, -0.57954824, -0.7689602)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5),
+"transitions": PackedFloat32Array(0.25, 0.25, 5.0982404),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0.16406095), Vector3(1.4049901, 1.7453293, 0.16406095), Vector3(0, 1.7453293, 0.16406095)]
+}
+
+[sub_resource type="Animation" id="Animation_o36fb"]
+resource_name = "shot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.43333334, 0.8, 1),
+"transitions": PackedFloat32Array(1.8660663, 1.8660663, 0.29730198, 4.756828, 0.4061263),
+"update": 0,
+"values": [Vector3(0.9170813, -0.57954824, -0.7689602), Vector3(0.917, -0.385, -0.244), Vector3(0.9170813, -0.57954824, -0.7689602), Vector3(0.917, -0.58, -0.254), Vector3(0.9170813, -0.57954824, -0.7689601)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.43333334, 0.8, 1),
+"transitions": PackedFloat32Array(3.1383367, 3.1383367, 0.30778608, 4.756828, 0.4061263),
+"update": 0,
+"values": [Vector3(0, 1.7453293, 0.16406095), Vector3(0, 1.7453293, 0.97563905), Vector3(0, 1.7453293, 0.16406095), Vector3(0.37524578, 1.7453293, 0.16406095), Vector3(0, 1.7453293, 0.16406095)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfft2"]
+_data = {
+&"RESET": SubResource("Animation_k340h"),
+&"apear": SubResource("Animation_wb178"),
+&"disapear": SubResource("Animation_i54pf"),
+&"relead": SubResource("Animation_ft41o"),
+&"shot": SubResource("Animation_o36fb")
+}
+
 [sub_resource type="GDScript" id="GDScript_l5k4b"]
 script/source = "extends State
 
@@ -572,7 +720,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7054037, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 
 [node name="Revolver" parent="head/Camera3D" unique_id=285168572 instance=ExtResource("2_wnl8p")]
-transform = Transform3D(-0.215, 0, -1.8795896e-08, 0, 0.215, 0, 1.8795896e-08, 0, -0.215, 0.754, -1.143, -0.955)
+transform = Transform3D(-0.21496727, 0, -0.003752265, 0, 0.215, 0, 0.003752265, 0, -0.21496727, 0.754, -0.143, -0.955)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/Revolver" unique_id=1215407363]
 libraries/ = SubResource("AnimationLibrary_8l7vh")
@@ -589,41 +737,87 @@ volume_db = -10.0
 stream = ExtResource("4_8qjpr")
 volume_db = -10.0
 
-[node name="gun" type="Node3D" parent="head/Camera3D" unique_id=125503630]
+[node name="smg" type="Node3D" parent="head/Camera3D" unique_id=125503630]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0.0004363323, 0, -0.0004363323, 0.9999999, 0.021639347, 0.22413336, -0.19438472)
 
-[node name="Root Scene" parent="head/Camera3D/gun" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(0.08682407, 0, 0.49240363, 0, 0.5, 0, -0.49240363, 0, 0.08682407, -0.782, -0.439, -0.434)
+[node name="Root Scene" parent="head/Camera3D/smg" unique_id=1273455208 instance=ExtResource("2_l5k4b")]
+transform = Transform3D(0.08682407, 0, 0.49240363, 0, 0.5, 0, -0.49240363, 0, 0.08682407, -0.782, -1.439, -0.434)
 
-[node name="SMG_2" parent="head/Camera3D/gun/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
+[node name="SMG_2" parent="head/Camera3D/smg/Root Scene/RootNode" parent_id_path=PackedInt32Array(1273455208, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
 
-[node name="RayCast3D" parent="head/Camera3D/gun/Root Scene" index="1" unique_id=1917056638]
+[node name="RayCast3D" parent="head/Camera3D/smg/Root Scene" index="1" unique_id=1917056638]
 transform = Transform3D(-4.371139e-08, 0.026194401, -0.99965686, 0, 0.99965686, 0.026194401, 1, 1.144993e-09, -4.3696392e-08, 1.1986091, 0.25656354, -9.313224e-10)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene" unique_id=169537107]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/smg/Root Scene" unique_id=169537107]
 libraries/ = SubResource("AnimationLibrary_g8qwc")
 
-[node name="Root Scene2" parent="head/Camera3D/gun" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
-transform = Transform3D(-0.08682405, 0, 0.49240363, 0, 0.49999997, 0, -0.49240363, 0, -0.08682405, 0.782, -0.439, -0.434)
+[node name="Root Scene2" parent="head/Camera3D/smg" unique_id=1183484301 instance=ExtResource("2_l5k4b")]
+transform = Transform3D(-0.08682405, 0, 0.49240363, 0, 0.49999997, 0, -0.49240363, 0, -0.08682405, 0.782, -1.439, -0.434)
 
-[node name="SMG_2" parent="head/Camera3D/gun/Root Scene2/RootNode" parent_id_path=PackedInt32Array(1183484301, 29809733) index="1" unique_id=1683018]
+[node name="SMG_2" parent="head/Camera3D/smg/Root Scene2/RootNode" parent_id_path=PackedInt32Array(1183484301, 29809733) index="1" unique_id=1683018]
 transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 2.910383e-09, -0.14229542, 1.6235344e-08)
 
-[node name="RayCast3D" parent="head/Camera3D/gun/Root Scene2" index="1" unique_id=1917056638]
+[node name="RayCast3D" parent="head/Camera3D/smg/Root Scene2" index="1" unique_id=1917056638]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1986091, 0.26281255, -5.820766e-11)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/gun/Root Scene2" unique_id=658255380]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/smg/Root Scene2" unique_id=658255380]
 libraries/ = SubResource("AnimationLibrary_as6ag")
 
-[node name="658566IneedfreesoundeffectsplsSmgShoot" type="AudioStreamPlayer" parent="head/Camera3D/gun" unique_id=773498051]
+[node name="658566IneedfreesoundeffectsplsSmgShoot" type="AudioStreamPlayer" parent="head/Camera3D/smg" unique_id=773498051]
 stream = ExtResource("3_3y8pf")
 volume_db = -10.0
 
-[node name="612165OutsidetheboxaudioRetroSubMachineGunReload" type="AudioStreamPlayer" parent="head/Camera3D/gun" unique_id=1187694911]
+[node name="612165OutsidetheboxaudioRetroSubMachineGunReload" type="AudioStreamPlayer" parent="head/Camera3D/smg" unique_id=1187694911]
 stream = ExtResource("4_3iaxa")
 volume_db = -10.0
 pitch_scale = 0.7
+
+[node name="shot gun" parent="head/Camera3D" unique_id=2051766086 instance=ExtResource("8_2u64i")]
+transform = Transform3D(-0.39651915, 0.052573413, 0.0029310167, 0.015796201, 0.09752869, 0.3876063, 0.050229818, 0.38434908, -0.09875614, 0.557, 0.095, 0.276)
+
+[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=624595710]
+transform = Transform3D(0.16756302, 0.0023433566, -0.98585844, -0.027766922, 0.9996122, -0.0023435056, 0.9854686, 0.027766988, 0.16756311, 3.658459, 0.20970869, -0.05580163)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=959570382]
+transform = Transform3D(-0.15784918, 0.0020776242, -0.987461, 0.026157226, 0.9996563, -0.0020779222, 0.9871152, -0.026157256, -0.15784931, 3.6583202, 0.20886457, 0.05821252)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D4" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=625241018]
+transform = Transform3D(-4.1755598e-08, -0.12018889, -0.9927505, 1.0450596e-08, 0.9927516, -0.12018895, 0.9999985, -1.5393425e-08, -4.0197023e-08, 3.672251, 0.29293156, 2.3841858e-07)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D5" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1697899247]
+transform = Transform3D(-6.7181894e-08, 0.517699, -0.8555626, -4.1248853e-08, 0.8555639, 0.51769817, 0.99999857, 7.007114e-08, -3.6124042e-08, 3.646981, 0.14043665, 2.3841858e-07)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D6" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1584999588]
+transform = Transform3D(0.06806212, -0.108872995, -0.99172187, -0.011278582, 0.99388117, -0.109883875, 0.9976158, 0.018664172, 0.0664176, 3.6668236, 0.26018643, -0.042687893)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D7" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1895197066]
+transform = Transform3D(-0.097709395, -0.12554947, -0.98726356, 0.016191443, 0.9916795, -0.12771337, 0.9950818, -0.02846405, -0.094863534, 3.6660573, 0.2555654, 0.048522234)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D8" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1311710889]
+transform = Transform3D(0.13063052, 0.023774147, -0.9911453, -0.021646835, 0.9995429, 0.02112253, 0.99119323, 0.018695923, 0.13108532, 3.6509435, 0.16435719, -0.043262005)
+target_position = Vector3(0, 0, 1)
+
+[node name="RayCast3D9" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1796553083]
+transform = Transform3D(-0.108463414, 0.08858331, -0.9901455, 0.017973479, 0.99603516, 0.08714116, 0.9939367, -0.008344753, -0.10962528, 3.6517942, 0.16948247, 0.04855919)
+target_position = Vector3(0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/shot gun" unique_id=1944233162]
+libraries/ = SubResource("AnimationLibrary_gfft2")
+
+[node name="564480LumikonShotgunShotSfx" type="AudioStreamPlayer" parent="head/Camera3D/shot gun" unique_id=2146755519]
+stream = ExtResource("9_pr7q3")
+volume_db = -10.0
+
+[node name="ShotgunReload" type="AudioStreamPlayer" parent="head/Camera3D/shot gun" unique_id=2122300046]
+stream = ExtResource("10_mk848")
+volume_db = -25.0
 
 [node name="667292PekenaLarvaVocMaleJump02" type="AudioStreamPlayer" parent="." unique_id=1263352628]
 stream = ExtResource("6_as6ag")
@@ -672,25 +866,30 @@ script = SubResource("GDScript_l5k4b")
 heart = NodePath("../../141624Metrostock99ShortHeartBeatsClean")
 parent = NodePath("../..")
 
-[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun", "gun2", "revolver", "gun_anime", "bareel", "gun_anime2", "bareel2", "revolver_anime", "revolver_bareel", "camera", "shot_", "shot_revolver", "reload_revolver", "reload_", "head", "parent")]
+[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun", "shot_gun", "raycasts", "shot_gun_anime", "shot_shot_gun", "shot_gun_reload", "gun2", "revolver", "gun_anime", "bareel", "gun_anime2", "bareel2", "revolver_anime", "revolver_bareel", "camera", "shot_", "shot_revolver", "reload_revolver", "reload_", "head", "parent")]
 script = ExtResource("7_3y8pf")
-gun = NodePath("../../head/Camera3D/gun/Root Scene")
-gun2 = NodePath("../../head/Camera3D/gun/Root Scene2")
+gun = NodePath("../../head/Camera3D/smg/Root Scene")
+shot_gun = NodePath("../../head/Camera3D/shot gun")
+raycasts = [NodePath("../../head/Camera3D/shot gun/RayCast3D"), NodePath("../../head/Camera3D/shot gun/RayCast3D2"), NodePath("../../head/Camera3D/shot gun/RayCast3D4"), NodePath("../../head/Camera3D/shot gun/RayCast3D5"), NodePath("../../head/Camera3D/shot gun/RayCast3D6"), NodePath("../../head/Camera3D/shot gun/RayCast3D7"), NodePath("../../head/Camera3D/shot gun/RayCast3D8"), NodePath("../../head/Camera3D/shot gun/RayCast3D9")]
+shot_gun_anime = NodePath("../../head/Camera3D/shot gun/AnimationPlayer")
+shot_shot_gun = NodePath("../../head/Camera3D/shot gun/564480LumikonShotgunShotSfx")
+shot_gun_reload = NodePath("../../head/Camera3D/shot gun/ShotgunReload")
+gun2 = NodePath("../../head/Camera3D/smg/Root Scene2")
 revolver = NodePath("../../head/Camera3D/Revolver")
-gun_anime = NodePath("../../head/Camera3D/gun/Root Scene/AnimationPlayer")
-bareel = NodePath("../../head/Camera3D/gun/Root Scene/RayCast3D")
-gun_anime2 = NodePath("../../head/Camera3D/gun/Root Scene2/AnimationPlayer")
-bareel2 = NodePath("../../head/Camera3D/gun/Root Scene2/RayCast3D")
+gun_anime = NodePath("../../head/Camera3D/smg/Root Scene/AnimationPlayer")
+bareel = NodePath("../../head/Camera3D/smg/Root Scene/RayCast3D")
+gun_anime2 = NodePath("../../head/Camera3D/smg/Root Scene2/AnimationPlayer")
+bareel2 = NodePath("../../head/Camera3D/smg/Root Scene2/RayCast3D")
 revolver_anime = NodePath("../../head/Camera3D/Revolver/AnimationPlayer")
 revolver_bareel = NodePath("../../head/Camera3D/Revolver/RayCast3D")
 camera = NodePath("../../head/Camera3D")
-shot_ = NodePath("../../head/Camera3D/gun/658566IneedfreesoundeffectsplsSmgShoot")
+shot_ = NodePath("../../head/Camera3D/smg/658566IneedfreesoundeffectsplsSmgShoot")
 shot_revolver = NodePath("../../head/Camera3D/Revolver/541818NoxSoundWeaponRevolverShotsStereo")
 reload_revolver = NodePath("../../head/Camera3D/Revolver/240698Ajoyce86RevolverCocking")
-reload_ = NodePath("../../head/Camera3D/gun/612165OutsidetheboxaudioRetroSubMachineGunReload")
+reload_ = NodePath("../../head/Camera3D/smg/612165OutsidetheboxaudioRetroSubMachineGunReload")
 head = NodePath("../../head")
 magzin_number = 20
 parent = NodePath("../..")
 
-[editable path="head/Camera3D/gun/Root Scene"]
-[editable path="head/Camera3D/gun/Root Scene2"]
+[editable path="head/Camera3D/smg/Root Scene"]
+[editable path="head/Camera3D/smg/Root Scene2"]

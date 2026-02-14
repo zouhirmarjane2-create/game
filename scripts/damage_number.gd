@@ -1,6 +1,6 @@
 extends Node
 
-func display_number(value : int , position : Vector2) :
+func display_number(value : int , position : Vector2 ,priority) :
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)
@@ -8,9 +8,9 @@ func display_number(value : int , position : Vector2) :
 	number.label_settings = LabelSettings.new()
 	
 	var clor ="#FFF"
-	if value == 80 :
+	if priority == 0 :
 		clor="b22"
-	elif  value == 40 :
+	elif  priority == 1 :
 		clor = "#FFFF00"
 	
 	number.label_settings.font_color = clor

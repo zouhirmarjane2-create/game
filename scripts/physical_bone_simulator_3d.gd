@@ -1,9 +1,9 @@
 extends PhysicalBone3D
 
 
-@export var damage : float
+
 signal body_hit(dam)
 
-func hit() :
-	emit_signal("body_hit" , damage)
+func hit(dam) :
+	emit_signal("body_hit" , dam)
 	
