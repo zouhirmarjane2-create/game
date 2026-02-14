@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://4u8ugttwpluf" path="res://scripts/bulet.gd" id="1_4oklr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4oklr"]
-radius = 0.025
+radius = 0.05
 height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eebj4"]
@@ -37,6 +37,9 @@ emission_energy_multiplier = 8.0
 material = SubResource("StandardMaterial3D_4oklr")
 size = Vector3(0.05, 0.05, 0.05)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pke4c"]
+velocity_pivot = Vector3(0, 0, 1)
+
 [node name="bulet" type="Node3D" unique_id=1258656550 node_paths=PackedStringArray("mesh", "raycast", "partcal", "partical2")]
 script = ExtResource("1_4oklr")
 bulet_speed = 100.0
@@ -52,7 +55,7 @@ mesh = SubResource("CapsuleMesh_4oklr")
 surface_material_override/0 = SubResource("StandardMaterial3D_eebj4")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=372404765]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21952158)
+transform = Transform3D(3.395, 0, 0, 0, 3.395, 0, 0, 0, 3.395, 0, 0, 0.23754725)
 target_position = Vector3(0, 0, -0.5)
 collision_mask = 2
 hit_from_inside = true
@@ -86,5 +89,9 @@ process_material = SubResource("ParticleProcessMaterial_4oklr")
 draw_passes = 2
 draw_pass_1 = SubResource("BoxMesh_eebj4")
 draw_pass_2 = null
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=1553962617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.27423704)
+process_material = SubResource("ParticleProcessMaterial_pke4c")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

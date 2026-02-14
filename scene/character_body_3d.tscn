@@ -32,7 +32,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335),
+"times": PackedFloat32Array(-0.06666667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.754, -0.143, -0.955)]
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(-0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3.159046, 0)]
+"values": [Vector3(0, 3.281219, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pr7q3"]
@@ -102,10 +102,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.5),
+"times": PackedFloat32Array(0, 0.8, 1.5333333),
 "transitions": PackedFloat32Array(0.22531268, 0.21022417, 0.21022417),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.6580628), Vector3(0, 3.159046, 0)]
+"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.6580628), Vector3(0, 3.281219, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2u64i"]
@@ -133,7 +133,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.1),
 "transitions": PackedFloat32Array(1, 0.6372803, 0.6372803),
 "update": 0,
-"values": [Vector3(0, 3.159046, 0), Vector3(-0.91629785, 3.159046, 0), Vector3(0, 3.159046, 0)]
+"values": [Vector3(0, 3.281219, 0), Vector3(-0.91629785, 3.281219, 0), Vector3(0, 3.281219, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8l7vh"]
@@ -720,14 +720,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7054037, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 
 [node name="Revolver" parent="head/Camera3D" unique_id=285168572 instance=ExtResource("2_wnl8p")]
-transform = Transform3D(-0.21496727, 0, -0.003752265, 0, 0.215, 0, 0.003752265, 0, -0.21496727, 0.754, -0.143, -0.955)
+transform = Transform3D(-0.21290763, 0, -0.029922219, 0, 0.215, 0, 0.029922219, 0, -0.21290763, 0.754, -0.143, -0.955)
+
+[node name="RayCast3D2" type="RayCast3D" parent="head/Camera3D/Revolver" unique_id=96296201]
+transform = Transform3D(-0.9998489, 0, 0.017452465, 0, 1.0000002, 0, -0.017452465, 0, -0.9998489, -0.049206972, 0.298805, 2.8190432)
+target_position = Vector3(0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/Revolver" unique_id=1215407363]
 libraries/ = SubResource("AnimationLibrary_8l7vh")
-
-[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/Revolver" unique_id=96296201]
-transform = Transform3D(-0.99884593, 0, -0.0480305, 0, 1.0000002, 0, 0.0480305, 0, -0.99884593, -0.015751362, 0.3676319, 1.6214957)
-target_position = Vector3(0, 0, 1)
 
 [node name="541818NoxSoundWeaponRevolverShotsStereo" type="AudioStreamPlayer" parent="head/Camera3D/Revolver" unique_id=1046954991]
 stream = ExtResource("3_2pml0")
@@ -774,7 +774,7 @@ volume_db = -10.0
 pitch_scale = 0.7
 
 [node name="shot gun" parent="head/Camera3D" unique_id=2051766086 instance=ExtResource("8_2u64i")]
-transform = Transform3D(-0.39651915, 0.052573413, 0.0029310167, 0.015796201, 0.09752869, 0.3876063, 0.050229818, 0.38434908, -0.09875614, 0.557, 0.095, 0.276)
+transform = Transform3D(-0.39651915, 0.052573416, 0.0029310167, 0.015796201, 0.097528696, 0.3876063, 0.050229818, 0.3843491, -0.09875614, 0.557, 0.095, 0.276)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=624595710]
 transform = Transform3D(0.16756302, 0.0023433566, -0.98585844, -0.027766922, 0.9996122, -0.0023435056, 0.9854686, 0.027766988, 0.16756311, 3.658459, 0.20970869, -0.05580163)
@@ -881,7 +881,7 @@ bareel = NodePath("../../head/Camera3D/smg/Root Scene/RayCast3D")
 gun_anime2 = NodePath("../../head/Camera3D/smg/Root Scene2/AnimationPlayer")
 bareel2 = NodePath("../../head/Camera3D/smg/Root Scene2/RayCast3D")
 revolver_anime = NodePath("../../head/Camera3D/Revolver/AnimationPlayer")
-revolver_bareel = NodePath("../../head/Camera3D/Revolver/RayCast3D")
+revolver_bareel = NodePath("../../head/Camera3D/Revolver/RayCast3D2")
 camera = NodePath("../../head/Camera3D")
 shot_ = NodePath("../../head/Camera3D/smg/658566IneedfreesoundeffectsplsSmgShoot")
 shot_revolver = NodePath("../../head/Camera3D/Revolver/541818NoxSoundWeaponRevolverShotsStereo")

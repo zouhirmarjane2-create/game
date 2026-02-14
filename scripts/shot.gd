@@ -281,7 +281,7 @@ func _on_shot_gun_ammo_pressed() -> void:
 
 
 func _on_smg_pressed() -> void:
-	var price = 15
+	var price = 30
 	if score >= price and not has_smg :
 		has_smg = true
 		score -= price
@@ -315,6 +315,20 @@ func _on_ability_pressed() -> void:
 		score -= price
 		score_remouved.emit(score)
 
+
+func _on_grenade_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_win_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_ability_2_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_ability_3_pressed() -> void:
+	pass # Replace with function body.
 
 func _on_label_score_added(scoree: Variant) -> void:
 	score = scoree

@@ -1,6 +1,6 @@
 extends Label
 
-var scoree : int = 1
+var scoree : int = 0
 signal score_added(scoree)
 func _ready() -> void:
 	text = str(scoree)
