@@ -21,6 +21,7 @@ extends State
 @export var abylity_bar : ProgressBar
 @export var ability : Panel
 @export var head : Node3D
+@export var marker : Marker3D
 var total_shot_gun_magazin : int = 0
 var total_magazin: int = 0
 var total_revolver_magazin: int = 8
@@ -28,9 +29,10 @@ var shot_gun_shots = 0
 var revolver_shots = 0
 var shots = 0
 var ability_timer = 0
-signal mele_hit()
+
 
 var buleet = load("res://scene/bulet.tscn")
+var grenade = preload("res://scene/grenade.tscn")
 var instance
 var instance2
 @export var magzin_number : int = 30
@@ -51,11 +53,12 @@ var has_shot_gun = false
 var has_smg = false
 var has_ability = false
 var score : int = 0
+var can_trow = true
 signal score_remouved(score)
 
 
 func process_physics(delta: float) -> State:
-
+	grenade_trow()
 
 	if ability_timer > 0 :
 		ability_timer -= delta
@@ -227,8 +230,21 @@ func shot_gun__reload() :
 	is_reloading = false
 	shot_gun_shots = 0
 
-func melee_hit() :
-	mele_hit.emit()
+func grenade_trow():
+	if Input.is_action_just_pressed("grenade trow") and can_trow :
+		var grenadee = grenade.instantiate()
+		get_tree().current_scene.add_child(grenadee)
+		grenadee.global_position = marker.global_position
+		can_trow = false
+		var throw_force = 5.0
+		var up_bias = 0.5
+		var direction = -head.global_transform.basis.z.normalized()
+		direction.y += up_bias
+		grenadee.apply_central_impulse(direction.normalized() * throw_force)
+		await get_tree().create_timer(1).timeout
+		can_trow = true
+
+
 func main_gun_swap():
 	if gun.position.y <= -1 :
 		gun_anime.play("apear")
@@ -239,6 +255,7 @@ func main_gun_swap():
 		shot_gun_anime.play("disapear")
 	main = true
 	secondary = false
+
 func second_gun_swap():
 	if gun.position.y >= -1 :
 		gun_anime.play("disapear")
@@ -262,6 +279,7 @@ func third_gun_swap():
 	secondary = false
 
 
+
 func _on_shot_gun_pressed() -> void:
 	var price = 10
 	if score >= price and not has_shot_gun :
@@ -271,8 +289,8 @@ func _on_shot_gun_pressed() -> void:
 
 
 func _on_shot_gun_ammo_pressed() -> void:
-	var price = 2
-	var ammo = 16
+	var price = 3
+	var ammo = 8
 	if score >= price :
 		total_shot_gun_magazin += ammo
 		score -= price
@@ -289,7 +307,7 @@ func _on_smg_pressed() -> void:
 
 
 func _on_smg_ammo_pressed() -> void:
-	var price = 3
+	var price = 2
 	var ammo = 30
 	if score >= price :
 		total_magazin += ammo
@@ -299,7 +317,7 @@ func _on_smg_ammo_pressed() -> void:
 
 
 func _on_revolver_ammo_pressed() -> void:
-	var price = 1
+	var price = 2
 	var ammo = 10
 	if score >= price :
 		total_revolver_magazin += ammo

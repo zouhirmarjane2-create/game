@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(-0.06666667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.754, -0.143, -0.955)]
+"values": [Vector3(0.489, -0.225, -0.955)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,10 +44,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.033333335),
+"times": PackedFloat32Array(-0.06666667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3.281219, 0)]
+"values": [Vector3(0, 3.1764991, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pr7q3"]
@@ -93,7 +93,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8, 1.5),
 "transitions": PackedFloat32Array(0.22531268, 0.21022417, 0.21022417),
 "update": 0,
-"values": [Vector3(0.75431687, -0.14305866, -0.95495194), Vector3(0.159, -1.198, -0.28), Vector3(0.75431687, -0.14305866, -0.95495194)]
+"values": [Vector3(0.489, -0.225, -0.955), Vector3(0.159, -1.198, -0.28), Vector3(0.489, -0.225, -0.955)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,10 +102,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.5333333),
+"times": PackedFloat32Array(0, 0.46666667, 1.5),
 "transitions": PackedFloat32Array(0.22531268, 0.21022417, 0.21022417),
 "update": 0,
-"values": [Vector3(0, 3.1415927, 0), Vector3(0, 3.1415927, -1.6580628), Vector3(0, 3.281219, 0)]
+"values": [Vector3(0, 3.1764991, 0), Vector3(0, 3.1764991, -1.6580628), Vector3(0, 3.1764991, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2u64i"]
@@ -121,7 +121,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.1),
 "transitions": PackedFloat32Array(1, 0.6372803, 0.6372803),
 "update": 0,
-"values": [Vector3(0.75431687, -0.14305866, -0.95495194), Vector3(0.679, 0.167, -0.66), Vector3(0.75431687, -0.14305866, -0.95495194)]
+"values": [Vector3(0.489, -0.225, -0.955), Vector3(0.679, 0.167, -0.66), Vector3(0.489, -0.225, -0.955)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -133,7 +133,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.1),
 "transitions": PackedFloat32Array(1, 0.6372803, 0.6372803),
 "update": 0,
-"values": [Vector3(0, 3.281219, 0), Vector3(-0.91629785, 3.281219, 0), Vector3(0, 3.281219, 0)]
+"values": [Vector3(0, 3.1764991, 0), Vector3(-0.91629785, 3.1764991, 0), Vector3(0, 3.1764991, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8l7vh"]
@@ -720,11 +720,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7054037, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10290027, 0)
 
 [node name="Revolver" parent="head/Camera3D" unique_id=285168572 instance=ExtResource("2_wnl8p")]
-transform = Transform3D(-0.21290763, 0, -0.029922219, 0, 0.215, 0, 0.029922219, 0, -0.21290763, 0.754, -0.143, -0.955)
+transform = Transform3D(-0.21486902, 0, -0.007503368, 0, 0.215, 0, 0.007503368, 0, -0.21486902, 0.489, -0.225, -0.955)
 
 [node name="RayCast3D2" type="RayCast3D" parent="head/Camera3D/Revolver" unique_id=96296201]
-transform = Transform3D(-0.9998489, 0, 0.017452465, 0, 1.0000002, 0, -0.017452465, 0, -0.9998489, -0.049206972, 0.298805, 2.8190432)
-target_position = Vector3(0, 0, 1)
+transform = Transform3D(-0.9998487, 0, 0.017452434, 0, 1.0000002, 0, -0.017452434, 0, -0.9998487, 0.028770447, 0.35168058, 2.4865599)
+target_position = Vector3(0, 0, -1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/Revolver" unique_id=1215407363]
 libraries/ = SubResource("AnimationLibrary_8l7vh")
@@ -774,7 +774,7 @@ volume_db = -10.0
 pitch_scale = 0.7
 
 [node name="shot gun" parent="head/Camera3D" unique_id=2051766086 instance=ExtResource("8_2u64i")]
-transform = Transform3D(-0.39651915, 0.052573416, 0.0029310167, 0.015796201, 0.097528696, 0.3876063, 0.050229818, 0.3843491, -0.09875614, 0.557, 0.095, 0.276)
+transform = Transform3D(-0.39651915, 0.05257342, 0.0029310167, 0.015796201, 0.0975287, 0.3876063, 0.050229818, 0.38434914, -0.09875614, 0.557, 0.095, 0.276)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=624595710]
 transform = Transform3D(0.16756302, 0.0023433566, -0.98585844, -0.027766922, 0.9996122, -0.0023435056, 0.9854686, 0.027766988, 0.16756311, 3.658459, 0.20970869, -0.05580163)
@@ -818,6 +818,9 @@ volume_db = -10.0
 [node name="ShotgunReload" type="AudioStreamPlayer" parent="head/Camera3D/shot gun" unique_id=2122300046]
 stream = ExtResource("10_mk848")
 volume_db = -25.0
+
+[node name="Marker3D" type="Marker3D" parent="head" unique_id=146940105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5639187e-08, -0.044107437, -0.63643813)
 
 [node name="667292PekenaLarvaVocMaleJump02" type="AudioStreamPlayer" parent="." unique_id=1263352628]
 stream = ExtResource("6_as6ag")
@@ -866,7 +869,7 @@ script = SubResource("GDScript_l5k4b")
 heart = NodePath("../../141624Metrostock99ShortHeartBeatsClean")
 parent = NodePath("../..")
 
-[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun", "shot_gun", "raycasts", "shot_gun_anime", "shot_shot_gun", "shot_gun_reload", "gun2", "revolver", "gun_anime", "bareel", "gun_anime2", "bareel2", "revolver_anime", "revolver_bareel", "camera", "shot_", "shot_revolver", "reload_revolver", "reload_", "head", "parent")]
+[node name="shot" type="Node" parent="code logic" unique_id=1821987198 node_paths=PackedStringArray("gun", "shot_gun", "raycasts", "shot_gun_anime", "shot_shot_gun", "shot_gun_reload", "gun2", "revolver", "gun_anime", "bareel", "gun_anime2", "bareel2", "revolver_anime", "revolver_bareel", "camera", "shot_", "shot_revolver", "reload_revolver", "reload_", "head", "marker", "parent")]
 script = ExtResource("7_3y8pf")
 gun = NodePath("../../head/Camera3D/smg/Root Scene")
 shot_gun = NodePath("../../head/Camera3D/shot gun")
@@ -888,6 +891,7 @@ shot_revolver = NodePath("../../head/Camera3D/Revolver/541818NoxSoundWeaponRevol
 reload_revolver = NodePath("../../head/Camera3D/Revolver/240698Ajoyce86RevolverCocking")
 reload_ = NodePath("../../head/Camera3D/smg/612165OutsidetheboxaudioRetroSubMachineGunReload")
 head = NodePath("../../head")
+marker = NodePath("../../head/Marker3D")
 magzin_number = 20
 parent = NodePath("../..")
 

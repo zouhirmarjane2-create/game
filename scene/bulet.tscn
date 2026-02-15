@@ -93,5 +93,3 @@ draw_pass_2 = null
 [node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=1553962617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.27423704)
 process_material = SubResource("ParticleProcessMaterial_pke4c")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
