@@ -22,9 +22,11 @@ extends State
 @export var ability : Panel
 @export var head : Node3D
 @export var marker : Marker3D
+@export var grenade_label : Label
 var total_shot_gun_magazin : int = 0
 var total_magazin: int = 0
 var total_revolver_magazin: int = 8
+var total_grenade = 100
 var shot_gun_shots = 0
 var revolver_shots = 0
 var shots = 0
@@ -32,7 +34,7 @@ var ability_timer = 0
 
 
 var buleet = load("res://scene/bulet.tscn")
-var grenade = preload("res://scene/grenade.tscn")
+var grenade = load("res://scene/grenade.tscn")
 var instance
 var instance2
 @export var magzin_number : int = 30
@@ -59,6 +61,7 @@ signal score_remouved(score)
 
 func process_physics(delta: float) -> State:
 	grenade_trow()
+	grenade_label.text = str(total_grenade)
 
 	if ability_timer > 0 :
 		ability_timer -= delta
@@ -231,14 +234,15 @@ func shot_gun__reload() :
 	shot_gun_shots = 0
 
 func grenade_trow():
-	if Input.is_action_just_pressed("grenade trow") and can_trow :
+	if Input.is_action_just_pressed("grenade trow") and can_trow and total_grenade > 0:
+		total_grenade -= 1
 		var grenadee = grenade.instantiate()
 		get_tree().current_scene.add_child(grenadee)
 		grenadee.global_position = marker.global_position
 		can_trow = false
 		var throw_force = 5.0
 		var up_bias = 0.5
-		var direction = -head.global_transform.basis.z.normalized()
+		var direction = -camera.global_transform.basis.z.normalized()
 		direction.y += up_bias
 		grenadee.apply_central_impulse(direction.normalized() * throw_force)
 		await get_tree().create_timer(1).timeout
@@ -281,7 +285,7 @@ func third_gun_swap():
 
 
 func _on_shot_gun_pressed() -> void:
-	var price = 10
+	var price = 100
 	if score >= price and not has_shot_gun :
 		has_shot_gun = true
 		score -= price
@@ -289,7 +293,7 @@ func _on_shot_gun_pressed() -> void:
 
 
 func _on_shot_gun_ammo_pressed() -> void:
-	var price = 3
+	var price = 30
 	var ammo = 8
 	if score >= price :
 		total_shot_gun_magazin += ammo
@@ -299,7 +303,7 @@ func _on_shot_gun_ammo_pressed() -> void:
 
 
 func _on_smg_pressed() -> void:
-	var price = 30
+	var price = 300
 	if score >= price and not has_smg :
 		has_smg = true
 		score -= price
@@ -307,7 +311,7 @@ func _on_smg_pressed() -> void:
 
 
 func _on_smg_ammo_pressed() -> void:
-	var price = 2
+	var price = 20
 	var ammo = 30
 	if score >= price :
 		total_magazin += ammo
@@ -317,7 +321,7 @@ func _on_smg_ammo_pressed() -> void:
 
 
 func _on_revolver_ammo_pressed() -> void:
-	var price = 2
+	var price = 20
 	var ammo = 10
 	if score >= price :
 		total_revolver_magazin += ammo
@@ -327,7 +331,7 @@ func _on_revolver_ammo_pressed() -> void:
 
 
 func _on_ability_pressed() -> void:
-	var price = 5
+	var price = 50
 	if score >= price and not has_ability :
 		has_ability = true
 		score -= price
@@ -335,7 +339,11 @@ func _on_ability_pressed() -> void:
 
 
 func _on_grenade_pressed() -> void:
-	pass # Replace with function body.
+	var price = 80
+	if score >= price  :
+		total_grenade += 1
+		score -= price
+		score_remouved.emit(score)
 
 
 func _on_win_pressed() -> void:

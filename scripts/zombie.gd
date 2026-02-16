@@ -28,12 +28,14 @@ var i = 0
 var zombie_sound_rand = 0
 var sound_is_playing = false
 var offset
+var damage
 
 func _ready() -> void:
 	offset = Vector3(randf_range(-2.1 , 2.1) ,0 , randf_range(-2.1 , 2.1))
 	health = randf_range(180 , 400)
 	full_health = health
-	scale = Vector3(health / 200 , health / 200 , health / 200)
+	scale = Vector3(health / 250 , health / 250 , health / 250)
+	damage = health / 29
 	speed = speed * 290 / health 
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
@@ -94,7 +96,7 @@ func _target_in_range() -> bool :
 func hit_finish() :
 	if global_position.distance_to(player.global_position) < attack_range + 3.0 :
 		var dir = global_position.direction_to(player.global_position)
-		healt_node.hit(dir)
+		healt_node.hit(dir , damage)
 		punch.play()
 
 

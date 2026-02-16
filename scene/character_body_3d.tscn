@@ -665,12 +665,12 @@ var hit_stager = 12.0
 var player_healt = 100
 @export var health_bar : ProgressBar
 @export var heart : AudioStreamPlayer
-var zombie_damage = 10
 
-func hit(dir) :
+
+func hit(dir , damage) :
 	emit_signal(\"player_hit\")
 	parent.velocity += clamp(dir * hit_stager , Vector3(1 , 0.0 , 1 ) , Vector3(20.0 , 0.0 , 20.0))
-	player_healt -= zombie_damage
+	player_healt -= damage
 
  
 func process_physics(delta: float) -> State:
@@ -774,38 +774,38 @@ volume_db = -10.0
 pitch_scale = 0.7
 
 [node name="shot gun" parent="head/Camera3D" unique_id=2051766086 instance=ExtResource("8_2u64i")]
-transform = Transform3D(-0.39651915, 0.05257342, 0.0029310167, 0.015796201, 0.0975287, 0.3876063, 0.050229818, 0.38434914, -0.09875614, 0.557, 0.095, 0.276)
+transform = Transform3D(-0.39651915, 0.052573424, 0.0029310167, 0.015796201, 0.09752871, 0.3876063, 0.050229818, 0.38434914, -0.09875614, 0.557, 0.095, 0.276)
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=624595710]
-transform = Transform3D(0.16756302, 0.0023433566, -0.98585844, -0.027766922, 0.9996122, -0.0023435056, 0.9854686, 0.027766988, 0.16756311, 3.658459, 0.20970869, -0.05580163)
+transform = Transform3D(0.16756308, 0.0023433194, -0.98585904, -0.027766988, 0.9996127, -0.0023434907, 0.9854686, 0.027766839, 0.16756311, 3.7935848, 0.131253, -0.04156764)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D2" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=959570382]
-transform = Transform3D(-0.15784918, 0.0020776242, -0.987461, 0.026157226, 0.9996563, -0.0020779222, 0.9871152, -0.026157256, -0.15784931, 3.6583202, 0.20886457, 0.05821252)
+transform = Transform3D(-0.15784918, 0.002077587, -0.9874613, 0.02615723, 0.99965686, -0.0020779222, 0.9871152, -0.026157364, -0.1578493, 3.793446, 0.13040864, 0.07244657)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D4" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=625241018]
-transform = Transform3D(-4.1755598e-08, -0.12018889, -0.9927505, 1.0450596e-08, 0.9927516, -0.12018895, 0.9999985, -1.5393425e-08, -4.0197023e-08, 3.672251, 0.29293156, 2.3841858e-07)
+transform = Transform3D(-2.2351742e-08, -0.120189026, -0.9927509, 7.4505806e-08, 0.9927518, -0.12018897, 0.9999985, -2.9802322e-08, -1.4901161e-08, 3.8073769, 0.21447575, 0.014234215)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D5" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1697899247]
-transform = Transform3D(-6.7181894e-08, 0.517699, -0.8555626, -4.1248853e-08, 0.8555639, 0.51769817, 0.99999857, 7.007114e-08, -3.6124042e-08, 3.646981, 0.14043665, 2.3841858e-07)
+transform = Transform3D(-4.8428774e-08, 0.5176993, -0.8555629, 0, 0.8555643, 0.51769835, 0.9999985, -4.4703484e-08, -5.2154064e-08, 3.7821064, 0.061980844, 0.01423423)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D6" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1584999588]
-transform = Transform3D(0.06806212, -0.108872995, -0.99172187, -0.011278582, 0.99388117, -0.109883875, 0.9976158, 0.018664172, 0.0664176, 3.6668236, 0.26018643, -0.042687893)
+transform = Transform3D(0.068062186, -0.10887302, -0.9917222, -0.0112785995, 0.99388164, -0.109883904, 0.9976158, 0.018664047, 0.06641763, 3.8019505, 0.18173063, -0.028453887)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D7" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1895197066]
-transform = Transform3D(-0.097709395, -0.12554947, -0.98726356, 0.016191443, 0.9916795, -0.12771337, 0.9950818, -0.02846405, -0.094863534, 3.6660573, 0.2555654, 0.048522234)
+transform = Transform3D(-0.09770944, -0.1255495, -0.98726356, 0.016191483, 0.99168015, -0.12771349, 0.99508166, -0.028464124, -0.09486352, 3.8011832, 0.17710972, 0.06275627)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D8" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1311710889]
-transform = Transform3D(0.13063052, 0.023774147, -0.9911453, -0.021646835, 0.9995429, 0.02112253, 0.99119323, 0.018695923, 0.13108532, 3.6509435, 0.16435719, -0.043262005)
+transform = Transform3D(0.13063064, 0.023774117, -0.9911459, -0.021646842, 0.99954313, 0.021122575, 0.99119323, 0.018695772, 0.13108534, 3.7860694, 0.0859015, -0.029027984)
 target_position = Vector3(0, 0, 1)
 
 [node name="RayCast3D9" type="RayCast3D" parent="head/Camera3D/shot gun" unique_id=1796553083]
-transform = Transform3D(-0.108463414, 0.08858331, -0.9901455, 0.017973479, 0.99603516, 0.08714116, 0.9939367, -0.008344753, -0.10962528, 3.6517942, 0.16948247, 0.04855919)
+transform = Transform3D(-0.10846343, 0.0885833, -0.99014586, 0.017973498, 0.99603546, 0.08714118, 0.99393666, -0.008344829, -0.109625265, 3.78692, 0.09102672, 0.062793225)
 target_position = Vector3(0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D/shot gun" unique_id=1944233162]
@@ -815,12 +815,12 @@ libraries/ = SubResource("AnimationLibrary_gfft2")
 stream = ExtResource("9_pr7q3")
 volume_db = -10.0
 
+[node name="Marker3D" type="Marker3D" parent="head/Camera3D/shot gun" unique_id=146940105]
+transform = Transform3D(-2.4782453, 0.09872628, 0.31393644, 0.3285838, 0.60955423, 2.4021814, 0.018318867, 2.422539, -0.6172258, 1.0846043, -2.4324727, 0.32402)
+
 [node name="ShotgunReload" type="AudioStreamPlayer" parent="head/Camera3D/shot gun" unique_id=2122300046]
 stream = ExtResource("10_mk848")
 volume_db = -25.0
-
-[node name="Marker3D" type="Marker3D" parent="head" unique_id=146940105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5639187e-08, -0.044107437, -0.63643813)
 
 [node name="667292PekenaLarvaVocMaleJump02" type="AudioStreamPlayer" parent="." unique_id=1263352628]
 stream = ExtResource("6_as6ag")
@@ -891,7 +891,7 @@ shot_revolver = NodePath("../../head/Camera3D/Revolver/541818NoxSoundWeaponRevol
 reload_revolver = NodePath("../../head/Camera3D/Revolver/240698Ajoyce86RevolverCocking")
 reload_ = NodePath("../../head/Camera3D/smg/612165OutsidetheboxaudioRetroSubMachineGunReload")
 head = NodePath("../../head")
-marker = NodePath("../../head/Marker3D")
+marker = NodePath("../../head/Camera3D/shot gun/Marker3D")
 magzin_number = 20
 parent = NodePath("../..")
 

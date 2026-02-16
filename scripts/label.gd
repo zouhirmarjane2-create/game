@@ -1,12 +1,12 @@
 extends Label
 
-var scoree : int = 0
+var scoree : int = 1000
 signal score_added(scoree)
 func _ready() -> void:
 	text = str(scoree)
 
 func _on_zombie_dead() -> void:
-	scoree += 2
+	scoree += 20
 	score_added.emit(scoree)
 	text = str(scoree)
 
