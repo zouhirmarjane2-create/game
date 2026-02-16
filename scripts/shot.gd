@@ -240,10 +240,11 @@ func grenade_trow():
 		get_tree().current_scene.add_child(grenadee)
 		grenadee.global_position = marker.global_position
 		can_trow = false
-		var throw_force = 5.0
+		var throw_force = 10
 		var up_bias = 0.5
 		var direction = -camera.global_transform.basis.z.normalized()
 		direction.y += up_bias
+		grenadee.rotation += Vector3.ONE 
 		grenadee.apply_central_impulse(direction.normalized() * throw_force)
 		await get_tree().create_timer(1).timeout
 		can_trow = true

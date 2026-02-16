@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 @export var raduis : Area3D
-var damage = 10
+var damage = 15
 @export var partical_system : GPUParticles3D
 @export var partical_system1 : GPUParticles3D
 @export var partical_system2 : GPUParticles3D
@@ -16,7 +16,7 @@ func _on_body_entered(body: Node) -> void:
 func _on_timer_timeout() -> void:
 	partical_system.emitting = true
 	partical_system2.emitting = true
-	partical_system1.emitting = true
+	partical_system1	.emitting = true
 	grnade_sound.play()
 	var bodies = raduis.get_overlapping_bodies()
 	for obj in bodies :

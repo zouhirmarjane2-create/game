@@ -17,15 +17,24 @@ func _process(delta: float) -> void:
 		get_tree().paused = false
 	
 	if Input.is_action_just_pressed("pause") :
-		var visiblee = pause_menue.visible
-		if not visiblee :
+		var p_visiblee = pause_menue.visible
+		var s_visiblee = shop.visible
+		var o_visible = option_menue.visible
+		if s_visiblee : 
+			shop.visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			get_tree().paused = false
+		elif  o_visible : 
+			option_menue.visible = false
+		elif not p_visiblee :
 			pause_menue.visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 			get_tree().paused = true
-		if visiblee :
+		else:
 			pause_menue.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_tree().paused = false
+
 
 
 func _on_continue_pressed() -> void:

@@ -2,9 +2,14 @@ extends Node
 
 func display_number(value : int , position : Vector2 ,priority) :
 	var number = Label.new()
+	number.add_to_group("damage number")
+	var label = get_tree().get_nodes_in_group("damage number")
+	if label.is_empty() :
+		number.z_index = 5
+	else :
+		number.z_index = 5 + label.size()
 	number.global_position = position
 	number.text = str(value)
-	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 	
 	var clor ="#FFF"

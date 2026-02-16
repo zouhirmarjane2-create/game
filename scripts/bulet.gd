@@ -8,6 +8,7 @@ extends Node3D
 @export var partical2 : GPUParticles3D
 var damage = 20
 var particals
+var did_colide = false
 
 func _process(delta: float) -> void:
 	position += transform.basis * Vector3(0 , 0 , -bulet_speed) * delta
@@ -16,13 +17,15 @@ func _process(delta: float) -> void:
 		var collider = raycast.get_collider()
 		if collider.has_method("hit"):
 			collider.hit(damage)
-		if collider is PhysicalBone3D :
+		if collider is PhysicalBone3D  and not did_colide:
+			did_colide = true
+			mesh.queue_free()
 			partical2.emitting = true
 			raycast.enabled = false
-			mesh.queue_free()
 			await get_tree().create_timer(1.0).timeout
 			queue_free()
-		else :
+		elif not did_colide :
+			did_colide = true
 			partcal.emitting = true
 			raycast.enabled = false
 			mesh.queue_free()

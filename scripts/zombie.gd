@@ -15,6 +15,7 @@ var player = null
 @export var death: AudioStreamPlayer
 @export var punch: AudioStreamPlayer
 @export var health_bar : ProgressBar
+@export var hit_timer : Timer
 @onready var player_healt = "/root/main/player/code logic/healt"
 
 var healt_node
@@ -29,6 +30,7 @@ var zombie_sound_rand = 0
 var sound_is_playing = false
 var offset
 var damage
+var damm = 0
 
 func _ready() -> void:
 	offset = Vector3(randf_range(-2.1 , 2.1) ,0 , randf_range(-2.1 , 2.1))
@@ -98,10 +100,13 @@ func hit_finish() :
 		var dir = global_position.direction_to(player.global_position)
 		healt_node.hit(dir , damage)
 		punch.play()
+		
 
 
 
 func get_hit(dam , pr):
+	damm += dam
+	hit_timer.start()
 	var sound 
 	var x = randi_range(1 , 3)
 	if x == 1 :
@@ -113,7 +118,11 @@ func get_hit(dam , pr):
 	sound.play()
 	sound.pitch_scale = randf_range(0.8 , 1.2)
 	health -= dam
-	DamageNumber.display_number(dam , damage_origine.global_position , pr)
+	if damm == 0 :
+		DamageNumber.display_number(damm , damage_origine.global_position , pr)
+	else :
+		await get_tree().create_timer(0.2).timeout
+		DamageNumber.display_number(damm , damage_origine.global_position , pr)
 	is_hit = true
 	await get_tree().create_timer(0.1).timeout  #
 	is_hit = false
@@ -156,3 +165,7 @@ func _on_physical_bone_mixamorig_right_leg_body_hit(dam: Variant) -> void:
 	get_hit(dam , 3)
 func _on_physical_bone_mixamorig_right_foot_body_hit(dam: Variant) -> void:
 	get_hit(dam , 3)
+
+
+func _on_timer_timeout() -> void:
+	damm = 0
