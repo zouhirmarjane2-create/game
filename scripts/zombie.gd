@@ -31,6 +31,8 @@ var sound_is_playing = false
 var offset
 var damage
 var damm = 0
+var x = 1
+var next_nav_point
 
 func _ready() -> void:
 	offset = Vector3(randf_range(-2.1 , 2.1) ,0 , randf_range(-2.1 , 2.1))
@@ -38,7 +40,7 @@ func _ready() -> void:
 	full_health = health
 	scale = Vector3(health / 250 , health / 250 , health / 250)
 	damage = health / 29
-	speed = speed * 290 / health 
+	speed = speed * 400 / health 
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
 	state_machine = anime_tree.get("parameters/playback")
@@ -65,8 +67,12 @@ func _physics_process(delta: float) -> void :
 	if not is_hit :
 		match state_machine.get_current_node() :
 			"run":
-				nav_agent.set_target_position(player.global_position + offset)
-				var next_nav_point = nav_agent.get_next_path_position()
+				if x >= 0.4 :
+					nav_agent.set_target_position(player.global_position + offset)
+					next_nav_point = nav_agent.get_next_path_position()
+					x = 0
+				else :
+					x += delta
 				velocity = (next_nav_point - global_position).normalized() * speed * delta
 				rotation.y = lerp_angle(rotation.y , atan2(-velocity.x , -velocity.z) , delta * 10)
 			"punch" :
@@ -109,16 +115,17 @@ func get_hit(dam , pr):
 	hit_timer.start()
 	var sound 
 	var x = randi_range(1 , 3)
-	if x == 1 :
-		sound = take_dame_sound_1
-	elif x == 2 :
-		sound = take_dame_sound_2
-	else :
-		sound = take_dame_sound_3
-	sound.play()
-	sound.pitch_scale = randf_range(0.8 , 1.2)
+	if not take_dame_sound_1.playing and not take_dame_sound_2.playing and not take_dame_sound_3.playing :
+		if x == 1 :
+			sound = take_dame_sound_1
+		elif x == 2 :
+			sound = take_dame_sound_2
+		else :
+			sound = take_dame_sound_3
+		sound.pitch_scale = randf_range(0.8 , 1.2)
+		sound.play()
 	health -= dam
-	if damm == 0 :
+	if damm == dam :
 		DamageNumber.display_number(damm , damage_origine.global_position , pr)
 	else :
 		await get_tree().create_timer(0.2).timeout

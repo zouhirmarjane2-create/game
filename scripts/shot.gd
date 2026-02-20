@@ -23,10 +23,17 @@ extends State
 @export var head : Node3D
 @export var marker : Marker3D
 @export var grenade_label : Label
+@export var shot_gun_rec : ColorRect
+@export var magzin_number : int = 30
+@export var shot_gun_magzin_number : int = 16
+@export var revolver_magzin_number : int = 8
+@export var label : Label
+@export var plane : Node3D
+@export var alarm : AudioStreamPlayer
 var total_shot_gun_magazin : int = 0
 var total_magazin: int = 0
 var total_revolver_magazin: int = 8
-var total_grenade = 100
+var total_grenade = 0
 var shot_gun_shots = 0
 var revolver_shots = 0
 var shots = 0
@@ -35,12 +42,9 @@ var ability_timer = 0
 
 var buleet = load("res://scene/bulet.tscn")
 var grenade = load("res://scene/grenade.tscn")
+var missile = load("res://scene/missile.tscn")
 var instance
 var instance2
-@export var magzin_number : int = 30
-@export var shot_gun_magzin_number : int = 16
-@export var revolver_magzin_number : int = 8
-@export var label : Label
 var is_reloading = false
 var main = false
 var secondary = true
@@ -54,12 +58,28 @@ var shot_gun_magazin : int = 16
 var has_shot_gun = false
 var has_smg = false
 var has_ability = false
+var has_ability_2 = false
+var has_ability_3 = false
 var score : int = 0
 var can_trow = true
+var did_spawn = false
+var did_win = false
+var mis
 signal score_remouved(score)
 
 
 func process_physics(delta: float) -> State:
+	if did_win :
+		if not alarm.playing :
+			alarm.play()
+		plane.position.z += 10 * delta
+		if plane.position.z >= 0 :
+			alarm.stop()
+			if not did_spawn :
+				mis = missile.instantiate()
+				add_child(mis)
+				mis.global_position = plane.global_position + (Vector3.DOWN * 6)
+				did_spawn = true
 	grenade_trow()
 	grenade_label.text = str(total_grenade)
 
@@ -69,17 +89,21 @@ func process_physics(delta: float) -> State:
 	else :
 		ability_timer = 0
 		abylity_bar.value = 100
+	
 
 
 
 	if magazin <= 0 and not is_reloading and total_magazin > 0 and has_smg:
 		magazin = 0
+		await get_tree().create_timer(0.1).timeout
 		reload()
 	if revolver_magazine <= 0 and not is_reloading and total_revolver_magazin > 0:
 		revolver_magazine = 0
+		await get_tree().create_timer(0.4).timeout
 		revolver_reload()
 	if shot_gun_magazin <= 0 and not is_reloading and total_shot_gun_magazin > 0 and has_shot_gun:
 		shot_gun_magazin = 0
+		await get_tree().create_timer(1.0).timeout
 		shot_gun__reload()
 
 	if  Input.is_action_just_pressed("main ") and has_smg :
@@ -96,9 +120,18 @@ func process_physics(delta: float) -> State:
 		third_gun_swap()
 
 	if main and has_smg :
-		ability.visible = false
+		if has_ability_3 :
+			ability.visible = true
+		else :
+			ability.visible = false
 		label.text = str(magazin) + "/" + str(total_magazin)
 		clamp(magazin , 0 , max_)
+		if Input.is_action_just_pressed("ability") and not is_reloading and ability_timer <= 0 and has_ability_3 :
+			moving.walk_speed *= 2
+			await get_tree().create_timer(5).timeout
+			moving.walk_speed /= 2
+			ability_timer = 7.5
+			abylity_bar.value = 0
 		if Input.is_action_pressed("shoot") and not is_reloading :
 			shoot()
 			camera.rotation = lerp(camera.rotation , Vector3(
@@ -108,14 +141,17 @@ func process_physics(delta: float) -> State:
 		if Input.is_action_just_pressed("reload") and total_magazin > 0 and magazin < max_:
 			reload()
 	elif secondary :
-		ability.visible = true
+		if has_ability :
+			ability.visible = true
+		else :
+			ability.visible = false
 		label.text = str(revolver_magazine) + "/" + str(total_revolver_magazin)
 		clamp(revolver_magazine , 0 , max_revolver)
 		shot_.stop()
 		if Input.is_action_just_pressed("ability") and not is_reloading and ability_timer <= 0 and has_ability:
 			while revolver_magazine > 0 :
 				revolver_shot()
-				await get_tree().create_timer(0.01).timeout
+				await get_tree().create_timer(0.05).timeout
 			ability_timer = 7.5
 			abylity_bar.value = 0
 		if Input.is_action_just_pressed("shoot") and not is_reloading:
@@ -126,7 +162,20 @@ func process_physics(delta: float) -> State:
 		if Input.is_action_just_pressed("reload") and total_revolver_magazin > 0 and revolver_magazine < max_revolver:
 			revolver_reload()
 	elif has_shot_gun :
-		ability.visible = false
+		if has_ability_2 :
+			ability.visible = true
+		else :
+			ability.visible = false
+		if Input.is_action_just_pressed("ability") and not is_reloading and ability_timer <= 0 and has_ability_2:
+			parent.process_mode = Node.PROCESS_MODE_ALWAYS
+			get_tree().paused = true
+			shot_gun_rec.visible = true
+			await get_tree().create_timer(5.0).timeout
+			parent.process_mode = Node.PROCESS_MODE_INHERIT
+			get_tree().paused = false
+			shot_gun_rec.visible = false
+			ability_timer = 7.5
+			abylity_bar.value = 0
 		label.text = str(shot_gun_magazin) + "/" + str(total_shot_gun_magazin)
 		clamp(shot_gun_magazin , 0 , max_shot_gun)
 		if Input.is_action_just_pressed("shoot") and not is_reloading :
@@ -187,7 +236,7 @@ func revolver_shot() :
 			instance.damage = 40
 			instance.position = revolver_bareel.global_position
 			instance.transform.basis = revolver_bareel.global_transform.basis
-			instance.scale = Vector3(3,3,3)
+			instance.scale = Vector3.ONE * 2 
 			parent.get_parent().add_child(instance)
 
 
@@ -286,7 +335,7 @@ func third_gun_swap():
 
 
 func _on_shot_gun_pressed() -> void:
-	var price = 100
+	var price = 200
 	if score >= price and not has_shot_gun :
 		has_shot_gun = true
 		score -= price
@@ -347,15 +396,27 @@ func _on_grenade_pressed() -> void:
 		score_remouved.emit(score)
 
 
-func _on_win_pressed() -> void:
-	pass # Replace with function body.
-
-
 func _on_ability_2_pressed() -> void:
-	pass # Replace with function body.
+	var price = 100
+	if score >= price and not has_ability_2 :
+		has_ability_2 = true
+		score -= price
+		score_remouved.emit(score)
 
 func _on_ability_3_pressed() -> void:
-	pass # Replace with function body.
+	var price = 80
+	if score >= price and not has_ability_3 :
+		has_ability_3 = true
+		score -= price
+		score_remouved.emit(score)
+
+func _on_win_pressed() -> void:
+	var price = 500
+	if score >= price and not did_win :
+		did_win = true
+		score -= price
+		score_remouved.emit(score)
+
 
 func _on_label_score_added(scoree: Variant) -> void:
 	score = scoree

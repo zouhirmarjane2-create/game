@@ -46,6 +46,8 @@ func _on_continue_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
+func _on_quit_2_pressed() -> void:
+	get_tree().quit()
 
 func _on_option_pressed() -> void:
 	option_menue.visible = true
@@ -53,3 +55,6 @@ func _on_option_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	option_menue.visible = false
+
+func _on_replay_pressed() -> void:
+	get_tree().reload_current_scene()

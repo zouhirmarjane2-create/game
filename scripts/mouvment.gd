@@ -1,7 +1,6 @@
 extends State
 
 @export var walk_speed : float
-@export var sprint_speed : float
 @export var sensetivity : float
 @export var camera : Camera3D
 @export var head : Node3D
@@ -22,6 +21,7 @@ func _ready() -> void:
 	sens_label.text = str(sensitivity_slider.value)
 
 func process_physics(delta: float) -> State:
+	var sprint_speed = walk_speed * 1.4
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 

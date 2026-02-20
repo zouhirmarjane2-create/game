@@ -10,6 +10,7 @@ var damage = 20
 var particals
 var did_colide = false
 
+
 func _process(delta: float) -> void:
 	position += transform.basis * Vector3(0 , 0 , -bulet_speed) * delta
 	

@@ -7,11 +7,13 @@ extends Node3D
 @export var timer : Timer
 @export var timer_label : Label
 @export var enemy_remaining : Label
+var missile = load("res://scene/missile.tscn")
 var zombie = load("res://scene/zombie.scn")
 var inst
 var timer_started = false
 var wave = 0
-
+var did_spawn = false
+var mis
 
 func _ready() -> void:
 	randomize()

@@ -16,7 +16,7 @@ func _on_body_entered(body: Node) -> void:
 func _on_timer_timeout() -> void:
 	partical_system.emitting = true
 	partical_system2.emitting = true
-	partical_system1	.emitting = true
+	partical_system1.emitting = true
 	grnade_sound.play()
 	var bodies = raduis.get_overlapping_bodies()
 	for obj in bodies :
