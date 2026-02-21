@@ -99,7 +99,7 @@ func process_physics(delta: float) -> State:
 		reload()
 	if revolver_magazine <= 0 and not is_reloading and total_revolver_magazin > 0:
 		revolver_magazine = 0
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.2).timeout
 		revolver_reload()
 	if shot_gun_magazin <= 0 and not is_reloading and total_shot_gun_magazin > 0 and has_shot_gun:
 		shot_gun_magazin = 0

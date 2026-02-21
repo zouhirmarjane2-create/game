@@ -5,8 +5,8 @@ signal score_added(scoree)
 func _ready() -> void:
 	text = str(scoree)
 
-func _on_zombie_dead() -> void:
-	scoree += 20
+func _on_zombie_dead(reward) -> void:
+	scoree += reward
 	score_added.emit(scoree)
 	text = str(scoree)
 

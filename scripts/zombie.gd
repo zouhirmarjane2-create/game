@@ -24,14 +24,14 @@ var full_health
 var is_hit = false
 var dami = 2
 var is_dead = false
-signal dead
+signal dead(reward)
 var i = 0
 var zombie_sound_rand = 0
 var sound_is_playing = false
 var offset
 var damage
 var damm = 0
-var x = 1
+var reward = 0
 var next_nav_point
 
 func _ready() -> void:
@@ -41,6 +41,7 @@ func _ready() -> void:
 	scale = Vector3(health / 250 , health / 250 , health / 250)
 	damage = health / 29
 	speed = speed * 400 / health 
+	reward = int(round(15 + (health/27)))
 	player = get_node(player_path)
 	healt_node = get_node(player_healt)
 	state_machine = anime_tree.get("parameters/playback")
@@ -67,12 +68,8 @@ func _physics_process(delta: float) -> void :
 	if not is_hit :
 		match state_machine.get_current_node() :
 			"run":
-				if x >= 0.4 :
-					nav_agent.set_target_position(player.global_position + offset)
-					next_nav_point = nav_agent.get_next_path_position()
-					x = 0
-				else :
-					x += delta
+				nav_agent.set_target_position(player.global_position + offset)
+				next_nav_point = nav_agent.get_next_path_position()
 				velocity = (next_nav_point - global_position).normalized() * speed * delta
 				rotation.y = lerp_angle(rotation.y , atan2(-velocity.x , -velocity.z) , delta * 10)
 			"punch" :
@@ -92,7 +89,7 @@ func _physics_process(delta: float) -> void :
 			remove_from_group("enemy")
 			is_dead = true
 			anime_tree.set("parameters/conditions/die" , true)
-			dead.emit()
+			dead.emit(reward)
 			death.play()
 			await get_tree().create_timer(4.0).timeout
 			queue_free()
